@@ -20,29 +20,29 @@ import Auth from "./page/Auth";
 export const authRoutes = [
     {
         path: WORKOUT_ROUTES,
-        component: Workout
+        component: <Workout />
     },
     {
         path: LIST_MODULE_ROUTES,
-        component: ModuleList
+        component: <ModuleList />
     },
     {
         path: MODULE_ROUTES + '/:id',
-        component: Module
+        component: <Module />
     },
 ]
 
 export const publicRoutes = [
     {
         path: ABOUT_ROUTES,
-        component: About
+        component: <About />
     },
     {
         path: LOGIN_ROUTES,
-        component: Auth
+        component: <Auth />
     },
     {
         path: REGISTRATION_ROUTES,
-        component: Auth
+        component: <Auth />
     },
 ]
