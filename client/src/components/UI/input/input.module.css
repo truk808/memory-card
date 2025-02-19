@@ -1,7 +1,8 @@
 .input {
     background: #c8c8c8;
     width: 100%;
-    border: 1px solid gray;
+    height: 100%;
+    border: 2px solid rgba(128, 128, 128, 0.11);
     margin-top: 15px;
     margin-bottom: 5px;
 }

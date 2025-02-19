@@ -21,7 +21,7 @@ const Auth = () => {
 
     return (
         <div className="auth">
-            <Container>
+            <Container style='login'>
                 <h1 className='auth-title'>{isLogin ? "Авторизоваться" : "Заркгистрироваться"}</h1>
                 <Input placeholder={'Введите email'}/>
                 <Input placeholder={'Введите пароль'}/>

@@ -1,0 +1,21 @@
+.moduleContainer {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+}
+
+.icon {
+    width: 90px;
+    height: 90px;
+    background-color: red;
+}
+
+.inputsWrapper {
+    width: 100%;
+}
+
+.inputContainer {
+    width: 90%;
+    margin-left: 15px;
+}
