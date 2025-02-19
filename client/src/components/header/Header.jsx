@@ -3,6 +3,7 @@ import './header.css'
 import question from '../../img/icon/icon-question.svg'
 import gamepad from '../../img/icon/icon-gamepad.svg'
 import modules from '../../img/icon/icon-modules.svg'
+import {ABOUT_ROUTE, LIST_MODULE_ROUTE, WORKOUT_ROUTE} from "../../utils/consts";
 
 const Header = () => {
     return (
@@ -11,15 +12,15 @@ const Header = () => {
                 <ul className="nav-list">
                     <li className='nav-item'>
                         <img src={question} alt="" className="nav-item-img"/>
-                        <a href="" className="nav-item-link">О нас</a>
+                        <a href={ABOUT_ROUTE} className="nav-item-link">О нас</a>
                     </li>
                     <li className='nav-item'>
                         <img src={gamepad} alt="" className="nav-item-img"/>
-                        <a href="" className="nav-item-link">Тренировка</a>
+                        <a href={WORKOUT_ROUTE} className="nav-item-link">Тренировка</a>
                     </li>
                     <li className='nav-item'>
                         <img src={modules} alt="" className="nav-item-img"/>
-                        <a href="" className="nav-item-link">Модули</a>
+                        <a href={LIST_MODULE_ROUTE} className="nav-item-link">Модули</a>
                     </li>
                 </ul>
             </div>

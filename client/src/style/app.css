@@ -1,3 +1,15 @@
-* {
-    background-color: #F9FAFB;
+body {
+    background-color: #F9FAFB;;
+}
+
+.title {
+
+    font-size: 50px;
+    text-align: center;
+}
+
+.description {
+    color: #9A9A9A;
+    font-size: 20px;
+    text-align: center;
 }

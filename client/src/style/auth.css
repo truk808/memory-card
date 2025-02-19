@@ -1,0 +1,22 @@
+.auth {
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-title {
+    margin: 10px;
+    font-size: 32px;
+}
+
+.auth-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.auth-link {
+    color: #1858cc;
+}

@@ -1,17 +1,21 @@
 import React from 'react';
-import Header from '../components/header/Header';
-import Footer from "../components/footer/Footer";
+import '../style/about.css'
+import Container from "../components/UI/container/Container";
 
 const About = () => {
     return (
-        <div>
-            <Header />
-            <main className="main">
-                <div className="">
-                    <h1></h1>
+        <div className="about">
+            <div className="about-wrapper">
+                <div className="about-title">
+                    <h1 className="title">Lorem ipsum dolor sit.</h1>
+                    <p className='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+                        aspernatur beatae, distinctio doloribus expedita magnam nulla saepe sapiente tempore
+                        voluptatibus?</p>
                 </div>
-            </main>
-            {/*<Footer />*/}
+                <Container>
+                    2e2e2e2
+                </Container>
+            </div>
         </div>
     );
 };

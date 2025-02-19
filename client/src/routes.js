@@ -1,10 +1,10 @@
 import {
-    ABOUT_ROUTES,
-    LIST_MODULE_ROUTES,
-    LOGIN_ROUTES,
-    MODULE_ROUTES,
-    REGISTRATION_ROUTES,
-    WORKOUT_ROUTES
+    ABOUT_ROUTE,
+    LIST_MODULE_ROUTE,
+    LOGIN_ROUTE,
+    MODULE_ROUTE,
+    REGISTRATION_ROUTE,
+    WORKOUT_ROUTE
 } from "./utils/consts";
 import Workout from "./page/Workout";
 import ModuleList from "./page/ModuleList";
@@ -19,30 +19,30 @@ import Auth from "./page/Auth";
 
 export const authRoutes = [
     {
-        path: WORKOUT_ROUTES,
+        path: WORKOUT_ROUTE,
         component: <Workout />
     },
     {
-        path: LIST_MODULE_ROUTES,
+        path: LIST_MODULE_ROUTE,
         component: <ModuleList />
     },
     {
-        path: MODULE_ROUTES + '/:id',
+        path: MODULE_ROUTE + '/:id',
         component: <Module />
     },
 ]
 
 export const publicRoutes = [
     {
-        path: ABOUT_ROUTES,
+        path: ABOUT_ROUTE,
         component: <About />
     },
     {
-        path: LOGIN_ROUTES,
+        path: LOGIN_ROUTE,
         component: <Auth />
     },
     {
-        path: REGISTRATION_ROUTES,
+        path: REGISTRATION_ROUTE,
         component: <Auth />
     },
 ]
