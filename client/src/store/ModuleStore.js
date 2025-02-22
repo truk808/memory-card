@@ -1,40 +1,31 @@
 import {makeAutoObservable} from "mobx";
 
 export default class ModuleStore {
-    constructor () {
-        this._group = [
-            {id: 1, name: 'Неменцкий'},
-            {id: 2, name: 'Французкий'},
-        ]
-        this._modules = [
-            {id: 1, name: "der Leute"},
-            {id: 2, name: "dia Famille"},
-        ]
+    constructor() {
+        this._module = {id: 1, name: "der Leute"}
         this._cards = [
             {id: 1, sideOne: "der Mann", sideTwo: "Мужчина"},
             {id: 2, sideOne: "der Mann", sideTwo: "Мужчина"},
-            {id: 3, sideOne: "der Mann", sideTwo: "Мужчина"},
-            {id: 4, sideOne: "der Mann", sideTwo: "Мужчина"},
             {id: 5, sideOne: "der Mann", sideTwo: "Мужчина"},
+            {id: 6, sideOne: "der Mann", sideTwo: "Мужчина"},
+            {id: 8, sideOne: "der Mann", sideTwo: "Мужчина"},
         ]
         makeAutoObservable(this)
     }
 
-    setGroup(group) {
-        this._group = group
+    updateCard(id, side, value) {
+        const card = this._cards.find(card => card.id === id);
+        if (card) {
+            card[side] = value;
+        }
     }
-    setModules(modules) {
-        this._modules = modules
-    }
-    setUser(cards) {
-        this._cards = cards
+    updateModule(value) {
+        this._module = {id: 1, name: value}
     }
 
-    get group () {
-        return this._group
-    }
-    get modules() {
-        return this._modules
+
+    get module() {
+        return this._module
     }
     get cards () {
         return this._cards

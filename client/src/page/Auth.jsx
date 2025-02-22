@@ -16,7 +16,6 @@ const Auth = () => {
     function redirectToAbout() {
         window.location.assign(ABOUT_ROUTE)
         user.setIsAuth(true);
-        console.log(user._isAuth);
     }
 
     return (

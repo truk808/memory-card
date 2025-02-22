@@ -1,18 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Input from "../components/UI/input/Input";
 import '../style/module.css'
 import icon from "../img/icon/icon-globe.svg";
 import Button from "../components/UI/button/Button";
-import ModuleCard from "../components/UI/card/ModuleCard";
+import ModuleCardList from "../components/moduleCardList/ModuleCardList";
+import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
-const Module = () => {
+const Module = observer( () => {
+    const {module} = useContext(Context);
+
+    // const card = {id: 2, sideOne: 'ewfdewf', sideTwo: 'уааукпукипм'}
+
     return (
         <div className="module">
             <div className="module-wrapper">
                 <div className="module-title">
                     <img src={icon} alt="" className="moudule-img"/>
                     <div className="input-container">
-                        <Input/>
+                        <Input value={module.module.name} onChange={(e) => module.updateModule(e.target.value)} />
                     </div>
                 </div>
                 <div className="buttons-wrapper">
@@ -31,15 +37,12 @@ const Module = () => {
                 </div>
                 <div className="card-wrapper">
                     <hr className='separation'/>
-                    <ModuleCard />
-                    <ModuleCard />
-                    <ModuleCard />
-                    <ModuleCard />
+                        <ModuleCardList module={module} cards={module.cards} />
                     <hr className='separation'/>
                 </div>
             </div>
         </div>
     );
-};
+});
 
 export default Module;
