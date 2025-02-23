@@ -1,13 +1,13 @@
 import {
     ABOUT_ROUTE,
-    LIST_MODULE_ROUTE,
+    GROUP_ROUTE,
     LOGIN_ROUTE,
     MODULE_ROUTE,
     REGISTRATION_ROUTE,
     WORKOUT_ROUTE
 } from "./utils/consts";
 import Workout from "./page/Workout";
-import ModuleList from "./page/ModuleList";
+import Group from "./page/Group";
 import Module from "./page/Module";
 import About from "./page/About";
 import Auth from "./page/Auth";
@@ -23,8 +23,8 @@ export const authRoutes = [
         component: <Workout />
     },
     {
-        path: LIST_MODULE_ROUTE,
-        component: <ModuleList />
+        path: GROUP_ROUTE,
+        component: <Group />
     },
     {
         path: MODULE_ROUTE + '/:id',

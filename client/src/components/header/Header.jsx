@@ -3,7 +3,7 @@ import './header.css'
 import question from '../../img/icon/icon-question.svg'
 import gamepad from '../../img/icon/icon-gamepad.svg'
 import modules from '../../img/icon/icon-modules.svg'
-import {ABOUT_ROUTE, LIST_MODULE_ROUTE, WORKOUT_ROUTE} from "../../utils/consts";
+import {ABOUT_ROUTE, GROUP_ROUTE, WORKOUT_ROUTE} from "../../utils/consts";
 
 const Header = () => {
     return (
@@ -20,7 +20,7 @@ const Header = () => {
                     </li>
                     <li className='nav-item'>
                         <img src={modules} alt="" className="nav-item-img"/>
-                        <a href={LIST_MODULE_ROUTE} className="nav-item-link">Модули</a>
+                        <a href={GROUP_ROUTE} className="nav-item-link">Модули</a>
                     </li>
                 </ul>
             </div>
