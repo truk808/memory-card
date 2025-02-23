@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './container.module.css'
 
-const  Container = ({style, children}) => {
+const  Container = ({className, children}) => {
     return (
-        <div className={[styles.container, (style === 'card' ? styles.card : styles.login )].join(' ')}>
+        <div className={[styles.container, className].join(' ')}>
             {children}
         </div>
     );

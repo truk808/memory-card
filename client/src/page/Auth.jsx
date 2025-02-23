@@ -1,17 +1,16 @@
 import React, {useContext} from 'react';
-import Input from "../components/UI/input/Input";
-import Container from "../components/UI/container/Container";
 import '../style/auth.css'
 import {useLocation} from "react-router-dom";
-import {ABOUT_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
-import UserStore from "../store/UserStore";
+import {ABOUT_ROUTE, LOGIN_ROUTE} from "../utils/consts";
 import {Context} from "../index";
+import logo from "../img/icon/logo.svg"
+import Input from "../components/UI/input/Input";
 
 const Auth = () => {
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
 
-    const { user } = useContext(Context);
+    const {user} = useContext(Context);
 
     function redirectToAbout() {
         window.location.assign(ABOUT_ROUTE)
@@ -20,22 +19,23 @@ const Auth = () => {
 
     return (
         <div className="auth">
-            <Container style='login'>
-                <h1 className='auth-title'>{isLogin ? "Авторизоваться" : "Заркгистрироваться"}</h1>
-                <Input placeholder={'Введите email'}/>
-                <Input placeholder={'Введите пароль'}/>
-                {isLogin ?
-                    <div className="auth-wrapper">
-                        <a href={REGISTRATION_ROUTE} className='auth-link'>Зарегистрироваться</a>
-                        <button onClick={redirectToAbout}>Войти</button>
+            <div className="login-card">
+                <div className="auth-title">
+                    <img src={logo} alt=""/>
+                    <h1 className="auth-title-text">
+                        Memory card
+                    </h1>
+                </div>
+                <div className="auth-inputs-wrapper">
+                    <div className="auth-input-wrapper">
+                        <Input/>
                     </div>
-                    :
-                    <div className="auth-wrapper">
-                        <a href={LOGIN_ROUTE} className='auth-link'>Войти</a>
-                        <button>Зарегистрироваться</button>
+                    <div className="auth-input-wrapper">
+                        <Input/>
                     </div>
-                }
-            </Container>
+                </div>
+                <hr className={'auth-separator'} />
+            </div>
         </div>
     );
 };
