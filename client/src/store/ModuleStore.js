@@ -20,7 +20,7 @@ export default class ModuleStore {
         }
     }
     updateModule(value) {
-        this._module = {id: 1, name: value}
+        this._module.name = value
     }
 
 
