@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './input.module.css';
 
-const Input = (props) => {
+const Input = ({className, placeholder}) => {
     return (
-       <input {...props} className={styles.input} />
+       <input className={[styles.input, className ? styles.login : ''].join(' ')}
+       placeholder={placeholder}/>
     );
 };
 

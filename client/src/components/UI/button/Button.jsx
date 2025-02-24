@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './button.module.css'
 
-const Button = ({props, children}) => {
+const Button = ({icon, children, className, onClick}) => {
     return (
-        <button
-            {...props}
-            className={styles.button}>
-            {children}
+        <button onClick={onClick}  className={[styles.button, styles[className]].join(' ')}>
+            {icon ? <img className={styles.img} src={icon} alt=""/> : null}
+            <p className={styles.text}>
+                {children}
+            </p>
         </button>
     );
 };
