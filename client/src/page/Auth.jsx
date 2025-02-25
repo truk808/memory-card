@@ -14,7 +14,6 @@ const Auth = () => {
     const {user} = useContext(Context);
 
     function redirectToAbout() {
-        console.log('wsdawsd')
         window.location.assign(ABOUT_ROUTE)
         user.setIsAuth(true);
     }

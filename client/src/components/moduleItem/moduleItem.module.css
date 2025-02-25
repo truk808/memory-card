@@ -1,0 +1,17 @@
+.moduleItem {
+    display: flex;
+    align-items: center;
+    margin: 3px;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.icon {
+    margin: 5px;
+    color: orange;
+    width: 45px;
+}
+
+.text {
+    margin-left: 5px;
+}

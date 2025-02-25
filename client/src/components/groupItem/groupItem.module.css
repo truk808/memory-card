@@ -1,0 +1,18 @@
+.groupItem {
+
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.titleText {
+    margin: 5px 0 5px 10px ;
+    font-size: 24px;
+}
+
+.moduleList {
+    
+}
