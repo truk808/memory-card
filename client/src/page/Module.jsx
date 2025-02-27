@@ -6,12 +6,14 @@ import Button from "../components/UI/button/Button";
 import ModuleCardList from "../components/moduleCardList/ModuleCardList";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
+import {useLocation} from "react-router-dom";
+import Container from "../components/UI/container/Container";
 
 const Module = observer( () => {
+    const location = useLocation();
+    const moduleId = location.pathname.split('/')[2]
+
     const {module} = useContext(Context);
-
-    // const card = {id: 2, sideOne: 'ewfdewf', sideTwo: 'уааукпукипм'}
-
     return (
         <div className="module">
             <div className="module-wrapper">
@@ -23,16 +25,16 @@ const Module = observer( () => {
                 </div>
                 <div className="buttons-wrapper">
                     <div className="button-container">
-                        <Button>Повторение</Button>
+                        <Container><Button>Повторение</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Button>Заучивание</Button>
+                        <Container><Button>Заучивание</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Button>Тест</Button>
+                        <Container><Button>Тест</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Button>lorem</Button>
+                        <Container><Button>lorem</Button></Container>
                     </div>
                 </div>
                 <div className="card-wrapper">

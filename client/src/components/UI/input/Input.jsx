@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './input.module.css';
 
-const Input = ({className, placeholder}) => {
+const Input = ({className, placeholder, value, onChange}) => {
     return (
-       <input className={[styles.input, className ? styles.login : ''].join(' ')}
-       placeholder={placeholder}/>
+        <input
+            onChange={onChange}
+            value={value}
+            className={[styles.input, className ? styles.login : ''].join(' ')}
+            placeholder={placeholder}/>
     );
 };
 
