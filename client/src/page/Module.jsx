@@ -8,6 +8,7 @@ import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {useLocation} from "react-router-dom";
 import Container from "../components/UI/container/Container";
+import {CARD_ROUTE} from "../utils/consts";
 
 const Module = observer( () => {
     const location = useLocation();
@@ -25,7 +26,7 @@ const Module = observer( () => {
                 </div>
                 <div className="buttons-wrapper">
                     <div className="button-container">
-                        <Container><Button>Повторение</Button></Container>
+                        <Container><Button onClick={() => window.location.assign(CARD_ROUTE)}>Повторение</Button></Container>
                     </div>
                     <div className="button-container">
                         <Container><Button>Заучивание</Button></Container>
