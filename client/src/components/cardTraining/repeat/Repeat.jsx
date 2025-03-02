@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, {useState, useRef, useContext, useEffect} from 'react';
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index";
 import styles from './repeat.module.css';
@@ -8,7 +8,6 @@ import Button from "../../UI/button/Button";
 const Repeat = observer(() => {
     const { module } = useContext(Context);
     const [flipped, setFlipped] = useState(false);
-    const startX = useRef(null);
 
     const handleFlip = () => {
         setFlipped(!flipped);
@@ -31,7 +30,10 @@ const Repeat = observer(() => {
     }
 
     const nextCard = () => {
+        console.log(module.activeCard.sideTwo)
+        console.log(module.cards.indexOf(module.activeCard))
         const index = module.cards.indexOf(module.activeCard);
+
         if (index + 1 < module.cards.length) {
             module.setActiveCard(module.cards[index + 1]);
         } else {

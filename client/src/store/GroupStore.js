@@ -13,6 +13,12 @@ export default class GroupStore {
             {id: 3, name: "module 3"},
             {id: 4, name: "module 4"},
             {id: 5, name: "module 5"},
+            {id: 6, name: "module 6"},
+            {id: 7, name: "module 7"},
+            {id: 8, name: "module 8"},
+            {id: 9, name: "module 9"},
+            {id: 10, name: "module 10"},
+
         ];
         this._groupsSelected = [
 

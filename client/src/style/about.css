@@ -1,18 +1,3 @@
-.about {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.about-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60%;
-}
-
-.about-title {
+.about-icon-container {
 
 }
-

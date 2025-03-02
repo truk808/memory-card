@@ -1,7 +1,3 @@
-.module {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-}
 
 .module-wrapper {
     grid-column: 3 / 9;
@@ -30,10 +26,6 @@
     margin: 20px 0 20px 0;
 }
 
-.separation {
-    width: 100%;
-    border: 1px solid black;
-}
 
 .card-wrapper {
     /*width: 60%;*/

@@ -1,19 +1,30 @@
 import React from 'react';
 import '../style/about.css'
 import Container from "../components/UI/container/Container";
+import icon from "../img/icon/icon-globe.svg"
 
 const About = () => {
     return (
-        <div className="about">
-            <div className="about-wrapper">
-                <div className="about-title">
-                    <h1 className="title">Lorem ipsum dolor sit.</h1>
-                    <p className='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-                        aspernatur beatae, distinctio doloribus expedita magnam nulla saepe sapiente tempore
-                        voluptatibus?</p>
+        <div className="page">
+            <div className="page-wrapper">
+                <div className="title">
+                    <h1 className="h1-title-text">Memore Card — это удобный сервис для тренировки памяти</h1>
+                    <p className='title-description'>Мы помогаем пользователям развивать память, отслеживать прогресс и
+                        достигать новых результатов.</p>
                 </div>
                 <Container>
-                    2e2e2e2
+                    <h3 className="h3-title-text">Почему Memore Card?</h3>
+                    <div className="icon-wrapper">
+                        <div className="about-icon-container">
+                            <img src={icon} alt="" className="icon"/>
+                        </div>
+                        <div className="about-icon-container">
+                            <img src={icon} alt="" className="icon"/>
+                        </div>
+                        <div className="about-icon-container">
+                            <img src={icon} alt="" className="icon"/>
+                        </div>
+                    </div>
                 </Container>
             </div>
         </div>

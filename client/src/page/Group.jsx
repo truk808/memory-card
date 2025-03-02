@@ -13,10 +13,10 @@ const Group = observer(() => {
     const modules = group.getUngroupedModules()
 
     return (
-        <div className="moduleList">
-            <div className="moduleList-wrapper">
-                <div className="moduleList-title">
-                    <h1 className='title'>Модули</h1>
+        <div className="page">
+            <div className="page-wrapper">
+                <div className="title moduleList-title">
+                    <h1 className='h1-title-text'>Модули</h1>
                     <div className="title-button-wrapper">
                         <div className="title-button-container">
                             <Button icon={iconPlus} className={'blue'}>Создать модуль</Button>

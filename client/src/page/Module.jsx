@@ -9,14 +9,15 @@ import {observer} from "mobx-react-lite";
 import {useLocation} from "react-router-dom";
 import Container from "../components/UI/container/Container";
 import {CARD_ROUTE} from "../utils/consts";
+import { useNavigate } from "react-router-dom";
 
 const Module = observer( () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const moduleId = location.pathname.split('/')[2]
-
     const {module} = useContext(Context);
     return (
-        <div className="module">
+        <div className="page">
             <div className="module-wrapper">
                 <div className="module-title">
                     <img src={icon} alt="" className="moudule-img"/>
@@ -26,10 +27,10 @@ const Module = observer( () => {
                 </div>
                 <div className="buttons-wrapper">
                     <div className="button-container">
-                        <Container><Button onClick={() => window.location.assign(CARD_ROUTE)}>Повторение</Button></Container>
+                        <Container><Button onClick={() => navigate(CARD_ROUTE)}>Повторение</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Container><Button>Заучивание</Button></Container>
+                        <Container><Button onClick={() => navigate(CARD_ROUTE)}>Заучивание</Button></Container>
                     </div>
                     <div className="button-container">
                         <Container><Button>Тест</Button></Container>

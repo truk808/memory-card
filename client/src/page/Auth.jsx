@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import '../style/auth.css'
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {ABOUT_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import logo from "../img/icon/logo.svg"
@@ -8,13 +8,12 @@ import Input from "../components/UI/input/Input";
 import Button from "../components/UI/button/Button";
 
 const Auth = () => {
+    const navigate = useNavigate();
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
-
     const {user} = useContext(Context);
-
     function redirectToAbout() {
-        window.location.replace(ABOUT_ROUTE)
+        navigate(ABOUT_ROUTE)
         user.setIsAuth(true);
     }
 
