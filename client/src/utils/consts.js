@@ -1,0 +1,7 @@
+export const LOGIN_ROUTE = '/login'
+export const REGISTRATION_ROUTE = '/registration'
+export const ABOUT_ROUTE = '/about'
+export const WORKOUT_ROUTE = '/workout'
+export const GROUP_ROUTE = '/group'
+export const MODULE_ROUTE = '/module'
+export const CARD_ROUTE = '/card'

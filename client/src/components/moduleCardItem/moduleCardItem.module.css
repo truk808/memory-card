@@ -1,0 +1,20 @@
+.cardWrapper {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    /*background-color: black;*/
+    padding: 5px;
+}
+
+.inputWrapper {
+    width: 100%;
+    display: inline-table;
+    padding: 5px;
+}
