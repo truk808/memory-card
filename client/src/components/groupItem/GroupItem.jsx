@@ -12,7 +12,7 @@ const GroupItem = ({group, groups, style, active, onClick}) => {
                 <img src={active ? arrowDown : arrowRight} alt=""/>
                 <h1 className={styles.titleText}>{group.name}</h1>
             </div>
-            <div className={styles.moduleList}>
+            <div className={active ? [styles.moduleList, styles.active].join(' ') : styles.moduleList}>
                 {active ? <ModuleList
                     modules={modules}
                     groups={groups}/> : null}

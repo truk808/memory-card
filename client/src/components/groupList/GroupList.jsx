@@ -1,6 +1,7 @@
 import React from 'react';
 import GroupItem from "../groupItem/GroupItem";
 import {observer} from "mobx-react-lite";
+import styles from "./groupList.module.css"
 
 const GroupList = observer(({groups}) => {
     const handleGroupItemChange = (id) => {
