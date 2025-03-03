@@ -1,16 +1,17 @@
-import { makeAutoObservable } from "mobx";
+import {makeAutoObservable} from "mobx";
 
 export default class ModuleStore {
     constructor() {
-        this._module = { id: 1, name: "der Leute" };
+        this._module = {id: 1, name: "der Leute"};
         this._cards = [
-            { id: 1, sideOne: "der Mann", sideTwo: "Мужчина" },
-            { id: 2, sideOne: "die Frau", sideTwo: "Женщина" },
-            { id: 3, sideOne: "das Kind", sideTwo: "Ребенок" },
+            {id: 1, sideOne: "der Mann", sideTwo: "Мужчина"},
+            {id: 2, sideOne: "die Frau", sideTwo: "Женщина"},
+            {id: 3, sideOne: "das Kind", sideTwo: "Ребенок"},
         ];
-        this._learnedCard = [];
-        this._notLearnedCard = [];
-        this._activeCard = this._cards.length > 0 ? this._cards[0] : null;
+        // this._learnedCard = [];
+        // this._notLearnedCard = [];
+        this._activeCard = null;
+        this._learningCards = [];
         makeAutoObservable(this);
     }
 
@@ -24,6 +25,21 @@ export default class ModuleStore {
 
     setActiveCard(card) {
         this._activeCard = card;
+    }
+
+    setLearningCard(cards) {
+        this._learningCards = cards;
+    }
+
+    nextCard() {
+        const index = this._learningCards.indexOf(this.activeCard);
+
+        if (index + 1 < this.learningCards.length) {
+            this.setActiveCard(this.learningCards[index + 1]);
+        } else {
+            console.log("карт нет")
+            this.setActiveCard(null);
+        }
     }
 
     updateCard(id, side, value) {
@@ -45,7 +61,11 @@ export default class ModuleStore {
         return this._module
     }
 
-    get cards () {
+    get cards() {
         return this._cards
+    }
+
+    get learningCards() {
+        return this._learningCards
     }
 }

@@ -4,7 +4,9 @@ import Button from "../../UI/button/Button";
 import Container from "../../UI/container/Container";
 import styles from "./Memoraization.module.css";
 
-const Memorization = observer(({cards, module}) => {
+const Memorization = observer(({module}) => {
+    
+
     return (
         <div className={styles.page}>
             <div className={styles.pageWrapper}>
@@ -13,7 +15,7 @@ const Memorization = observer(({cards, module}) => {
                 </div>
                 <div className={styles.buttonWrapper}>
                     <div className={styles.buttonContainer}>
-                        <Container><Button>Вариант 1</Button></Container>
+                        <Container><Button onClick={() => module.nextCard()}>Вариант 1</Button></Container>
                     </div>
                     <div className={styles.buttonContainer}>
                         <Container><Button>Вариант 2</Button></Container>

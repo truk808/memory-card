@@ -2,7 +2,7 @@ const ApiError = require("../error/ApiError");
 const bcrypt = require("bcrypt");
 const {User} = require("../models/models");
 const jwt = require("jsonwebtoken");
-const {user} = require("pg/lib/native");
+// const {user} = require("pg/lib/native");
 
 const generateJwt = (id, email, subscription) => {
     return jwt.sign(

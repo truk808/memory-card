@@ -39,6 +39,7 @@ const Repeat = observer(() => {
         } else {
             module.setActiveCard(null);
         }
+        setFlipped(false);
     }
 
     return (
