@@ -6,7 +6,7 @@ const Input = ({className, placeholder, value, onChange}) => {
         <input
             onChange={onChange}
             value={value}
-            className={[styles.input, className ? styles.login : ''].join(' ')}
+            className={[styles.input, className ? styles.login : styles.card].join(' ')}
             placeholder={placeholder}/>
     );
 };

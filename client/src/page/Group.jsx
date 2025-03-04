@@ -7,10 +7,12 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import iconPlus from "../img/icon/icon-plus.svg"
 import iconAddGroup from "../img/icon/icon-add-group.svg"
-import AddModule from "../components/addModule/addModule";
+import AddModule from "../components/addModule/AddModule";
+import AddGroup from "../components/addGruop/AddGroup";
 
 const Group = observer(() => {
     const [moduleModalActive, setModuleModalActive] = useState(false);
+    const [groupModalActive, setGroupModalActive] = useState(false);
     const {group} = useContext(Context);
     const modules = group.getUngroupedModules()
 
@@ -24,7 +26,7 @@ const Group = observer(() => {
                             <Button icon={iconPlus} className={'blue'} onClick={() => setModuleModalActive(true)}>Создать модуль</Button>
                         </div>
                         <div className="title-button-container">
-                            <Button icon={iconAddGroup} className={'purple'}>Создать группу</Button>
+                            <Button icon={iconAddGroup} className={'purple'} onClick={() => setGroupModalActive(true)}>Создать группу</Button>
                         </div>
                     </div>
                 </div>
@@ -37,6 +39,7 @@ const Group = observer(() => {
                 </div>
             </div>
             <AddModule modalActive={moduleModalActive} setModalActive={setModuleModalActive} group={group}/>
+            <AddGroup modalActive={groupModalActive} setModalActive={setGroupModalActive} group={group}/>
         </div>
     );
 });

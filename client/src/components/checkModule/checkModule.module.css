@@ -1,0 +1,12 @@
+.checkModule {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+
+}
+
+.text {
+    margin-left: 5px;
+}

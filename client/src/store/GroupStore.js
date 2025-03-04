@@ -71,6 +71,10 @@ export default class GroupStore {
         this._modules.push(module);
     }
 
+    addGroup(group) {
+        this._groups.push(group);
+    }
+
     get groups() {
         return this._groups;
     }
