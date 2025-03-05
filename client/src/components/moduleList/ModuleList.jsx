@@ -8,6 +8,8 @@ const ModuleList = ({modules, groups}) => {
         window.location.assign([MODULE_ROUTE, id].join('/'));
     }
 
+    // console.log(modules)
+
     return (
         <div>
             {modules.map((module) =>

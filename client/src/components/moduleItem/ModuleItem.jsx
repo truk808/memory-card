@@ -4,6 +4,7 @@ import styles from './moduleItem.module.css'
 import icon from "../../img/icon/icon-graduation.svg";
 
 const ModuleItem = ({module, onClick}) => {
+    // console.log(module.name)
     return (
         <div className={styles.moduleItem} onClick={onClick}>
             <img src={icon} alt="" className={styles.icon}/>

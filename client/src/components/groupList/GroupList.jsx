@@ -11,6 +11,7 @@ const GroupList = observer(({groups}) => {
         <div>
             {groups.groups.map(group => (
                 <GroupItem
+                    modules={groups.getModulesByGroup(group.id)}
                     active={groups.groupsSelected.indexOf(group.id) !== -1}
                     onClick={() => handleGroupItemChange(group.id)}
                     key={group.id}

@@ -4,8 +4,7 @@ import ModuleList from "../../components/moduleList/ModuleList"
 import arrowDown from "../../img/icon/icon-arrow-downsvg.svg"
 import arrowRight from "../../img/icon/icon-arrow-right.svg"
 
-const GroupItem = ({group, groups, style, active, onClick}) => {
-    const modules = groups.getModulesByGroup(group.id);
+const GroupItem = ({group, groups, modules, active, onClick}) => {
     return (
         <div className={styles.groupItem} onClick={onClick}>
             <div className={styles.title}>

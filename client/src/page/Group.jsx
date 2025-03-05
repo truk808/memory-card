@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import iconPlus from "../img/icon/icon-plus.svg"
 import iconAddGroup from "../img/icon/icon-add-group.svg"
-import AddModule from "../components/addModule/AddModule";
+import AddModule from "../components/addModule/addModule";
 import AddGroup from "../components/addGruop/AddGroup";
 
 const Group = observer(() => {

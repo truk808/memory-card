@@ -8,9 +8,7 @@ import CheckModule from "../checkModule/CheckModule";
 
 const AddModule = ({modalActive, setModalActive, group}) => {
     const [name, setName] = React.useState('');
-    const [description, setDescription] = React.useState('');
-
-    // const [addModuleInGroup,]
+    const [modulesId, setModulesId] = React.useState([]);
 
     function addNewGroup() {
         const newGroup = {
@@ -18,8 +16,31 @@ const AddModule = ({modalActive, setModalActive, group}) => {
             name: name,
         }
         group.addGroup(newGroup);
-        console.log(group.groups);
+
+        modulesId.forEach((moduleId) => {
+            const ModuleInGroup = {
+                id: Date.now(),
+                groups_id: newGroup.id,
+                modules_id: moduleId
+            }
+            group.addModuleInGroup(ModuleInGroup)
+        })
     }
+
+    const handleToggleModule = (id) => {
+        setModulesId(moduleId =>
+            moduleId.includes(id) ? moduleId.filter(item => item !== id) : [...moduleId, id]
+        );
+    };
+
+    // const handleToggleModule = (id) => {
+    //     const index = modulesId.indexOf(id);
+    //     if (index !== -1) {
+    //         modulesId.splice(index, 1);
+    //     } else {
+    //         modulesId.push(id);
+    //     }
+    // };
 
     return (
         <Modal active={modalActive} setActive={setModalActive}>
@@ -34,7 +55,7 @@ const AddModule = ({modalActive, setModalActive, group}) => {
                     <div className={styles.scrollContainer}>
                         {
                             group.modules.map(module => (
-                                <CheckModule module={module}/>
+                                <CheckModule module={module} onChange={handleToggleModule} key={module.id} />
                             ))
                         }
                     </div>

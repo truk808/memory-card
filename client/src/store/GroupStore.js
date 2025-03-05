@@ -30,7 +30,9 @@ export default class GroupStore {
             {id: 5, groups_id: 1, modules_id: 5},
             {id: 6, groups_id: 1, modules_id: 6},
             {id: 7, groups_id: 1, modules_id: 7},
+            {id: 8, groups_id: 2, modules_id: 1},
             {id: 3, groups_id: 2, modules_id: 3},
+
         ];
 
         makeAutoObservable(this);
@@ -75,6 +77,10 @@ export default class GroupStore {
         this._groups.push(group);
     }
 
+    addModuleInGroup(groupModules) {
+        this._group_modules.push(groupModules);
+    }
+
     get groups() {
         return this._groups;
     }
@@ -85,6 +91,10 @@ export default class GroupStore {
 
     get groupsSelected() {
         return this._groupsSelected;
+    }
+
+    get groupInModules() {
+        return this._group_modules;
     }
 
 
