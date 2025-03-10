@@ -25,7 +25,7 @@
 }
 
 .moduleList.active {
-    max-height: 500px;
+    max-height: 100dvmax;
     opacity: 1;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
