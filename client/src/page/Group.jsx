@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import iconPlus from "../img/icon/icon-plus.svg"
 import iconAddGroup from "../img/icon/icon-add-group.svg"
-import AddModule from "../components/addModule/addModule";
+import AddModule from "../components/addModule/AddModule";
 import AddGroup from "../components/addGruop/AddGroup";
 
 const Group = observer(() => {
@@ -23,19 +23,31 @@ const Group = observer(() => {
                     <h1 className='h1-title-text'>Модули</h1>
                     <div className="title-button-wrapper">
                         <div className="title-button-container">
-                            <Button icon={iconPlus} className={'blue'} onClick={() => setModuleModalActive(true)}>Создать модуль</Button>
+                            <Button
+                                icon={iconPlus}
+                                className={'blue'}
+                                onClick={() => setModuleModalActive(true)}
+                            >
+                                Создать модуль
+                            </Button>
                         </div>
                         <div className="title-button-container">
-                            <Button icon={iconAddGroup} className={'purple'} onClick={() => setGroupModalActive(true)}>Создать группу</Button>
+                            <Button
+                                icon={iconAddGroup}
+                                className={'purple'}
+                                onClick={() => setGroupModalActive(true)}
+                            >
+                                Создать группу
+                            </Button>
                         </div>
                     </div>
                 </div>
                 <div className="group-wrapper">
-                    <GroupList groups={group} />
+                    <GroupList groups={group}/>
                 </div>
                 <hr className='separation'/>
                 <div className="module-wrapper">
-                    <ModuleList modules={modules} />
+                    <ModuleList modules={modules}/>
                 </div>
             </div>
             <AddModule modalActive={moduleModalActive} setModalActive={setModuleModalActive} group={group}/>
