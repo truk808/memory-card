@@ -1,5 +1,13 @@
+.moduleCardItem {
+    margin: 10px;
+}
+
+.delete {
+    display: flex;
+    justify-content: right;
+}
+
 .cardWrapper {
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,6 +19,22 @@
     height: 100px;
     /*background-color: black;*/
     padding: 5px;
+}
+
+.icon.delete {
+    border-radius: 50%;
+    /*background-color: blue;*/
+    cursor: pointer;
+    margin: 0 5px 0 auto;
+    width: 45px;
+    height: 45px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.icon.delete:hover   {
+    scale: 1.2;
+    opacity: 1;
 }
 
 .inputWrapper {

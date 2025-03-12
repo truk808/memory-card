@@ -6,7 +6,10 @@ export default class ModuleStore {
         this._cards = [
             {id: 1, sideOne: "der Mann", sideTwo: "Мужчина"},
             {id: 2, sideOne: "die Frau", sideTwo: "Женщина"},
-            {id: 3, sideOne: "das Kind", sideTwo: "Ребенок"},
+            {id: 3, sideOne: "das Madchen", sideTwo: "Девочка"},
+            {id: 4, sideOne: "der Junge", sideTwo: "Мальчик"},
+            {id: 5, sideOne: "der Mensh", sideTwo: "Человек"},
+
         ];
         // this._learnedCard = [];
         // this._notLearnedCard = [];
@@ -51,6 +54,10 @@ export default class ModuleStore {
 
     updateModule(value) {
         this._module.name = value
+    }
+
+    deleteCard(id) {
+        this._cards = this._cards.filter(card => card.id !== id);
     }
 
     get activeCard() {

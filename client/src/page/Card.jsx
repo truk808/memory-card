@@ -7,6 +7,7 @@ import Memorization from "../components/cardTraining/memorization/Memorization"
 const Card = observer(() => {
     const { module } = useContext(Context);
     const cards = [...module.cards].sort(() => Math.random() - 0.5)
+    // const cards = [...module.cards]
     module.setLearningCard(cards);
     module.setActiveCard(cards[0]);
 

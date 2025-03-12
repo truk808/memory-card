@@ -15,14 +15,25 @@ const Module = observer( () => {
     const navigate = useNavigate();
     const location = useLocation();
     const moduleId = location.pathname.split('/')[2]
+
     const {module} = useContext(Context);
+
+    const handleAddCard = () => {
+        const newCard = {
+            id: Date.now(),
+            sideOne: "",
+            sideTwo: ""
+        }
+        module.setCards([...module.cards, newCard]);
+    }
+
     return (
         <div className="page">
             <div className="module-wrapper">
                 <div className="module-title">
                     <img src={icon} alt="" className="moudule-img"/>
                     <div className="input-container">
-                        <Input value={module.module.name} onChange={(e) => module.updateModule(e.target.value)} />
+                        <Input value={module.module.name} onChange={(e) => module.updateModule(e.target.value)}/>
                     </div>
                 </div>
                 <div className="buttons-wrapper">
@@ -41,9 +52,12 @@ const Module = observer( () => {
                 </div>
                 <div className="card-wrapper">
                     <hr className='separation'/>
-                        <ModuleCardList module={module} cards={module.cards} />
+                    <ModuleCardList module={module} cards={module.cards}/>
                     <hr className='separation'/>
                 </div>
+                <button className="add-card-button" onClick={() => {handleAddCard()}}>
+                    +
+                </button>
             </div>
         </div>
     );
