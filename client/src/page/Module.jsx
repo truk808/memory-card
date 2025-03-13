@@ -36,6 +36,7 @@ const Module = observer( () => {
                         <Input value={module.module.name} onChange={(e) => module.updateModule(e.target.value)}/>
                     </div>
                 </div>
+                {/*дестр*/}
                 <div className="buttons-wrapper">
                     <div className="button-container">
                         <Container><Button onClick={() => navigate(CARD_ROUTE)}>Повторение</Button></Container>
@@ -44,7 +45,7 @@ const Module = observer( () => {
                         <Container><Button onClick={() => navigate(CARD_ROUTE)}>Заучивание</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Container><Button>Тест</Button></Container>
+                        <Container><Button onClick={() => navigate(CARD_ROUTE)}>Тест</Button></Container>
                     </div>
                     <div className="button-container">
                         <Container><Button>lorem</Button></Container>

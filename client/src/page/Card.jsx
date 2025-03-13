@@ -3,6 +3,7 @@ import { Context } from "../index";
 import { observer } from "mobx-react-lite";
 import Repeat from "../components/cardTraining/repeat/Repeat";
 import Memorization from "../components/cardTraining/memorization/Memorization"
+import Test from "../components/cardTraining/test/Test";
 
 const Card = observer(() => {
     const { module } = useContext(Context);
@@ -14,7 +15,8 @@ const Card = observer(() => {
     return (
         <div className='card'>
             {/*<Repeat cards={module.cards} module={module} />*/}
-            <Memorization module={module}/>
+            {/*<Memorization module={module}/>*/}
+            <Test module={module}/>
         </div>
     );
 });

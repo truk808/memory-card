@@ -1,0 +1,13 @@
+.test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    width: 100vw;
+}
+
+.text {
+    margin-bottom: 200px;
+    font-size: 36px;
+}

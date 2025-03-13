@@ -10,13 +10,14 @@ const Memorization = observer(({module}) => {
         const answerCorrect = learningCards.shift();
         const answerWrong = module.cards.filter(card => card.id !== answerCorrect.id).sort(() => Math.random() - 0.5).splice(0, 3);
         const answers = [...answerWrong, answerCorrect].sort(() => Math.random() - 0.5);
-        module.setLearningCard(learningCards)
         return answers
     }, [module.activeCard]);
 
     const handleAnswer = (sideOne) => {
         if (sideOne === module.activeCard.sideOne) {
             module.nextCard();
+        } else {
+            console.log("Ответ немправильный ")
         }
     };
 
