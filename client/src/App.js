@@ -11,8 +11,8 @@ function App() {
 
     return (
         <>
-            {user._isAuth && <Header/>}
             <BrowserRouter>
+                {user._isAuth && <Header/>}
                 <AppRouter/>
             </BrowserRouter>
         </>

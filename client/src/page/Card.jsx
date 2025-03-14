@@ -8,15 +8,12 @@ import Test from "../components/cardTraining/test/Test";
 const Card = observer(() => {
     const { module } = useContext(Context);
     const cards = [...module.cards].sort(() => Math.random() - 0.5)
-    // const cards = [...module.cards]
     module.setLearningCard(cards);
     module.setActiveCard(cards[0]);
 
+
     return (
         <div className='card'>
-            {/*<Repeat module={module} />*/}
-            {/*<Memorization module={module}/>*/}
-            <Test module={module}/>
         </div>
     );
 });

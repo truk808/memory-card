@@ -2,10 +2,12 @@ import React from 'react';
 import styles from './moduleList.module.css';
 import ModuleItem from "../moduleItem/ModuleItem";
 import {ABOUT_ROUTE, MODULE_ROUTE} from "../../utils/consts";
+import {useNavigate} from "react-router-dom";
 
 const ModuleList = ({modules, groups}) => {
+    const navigate = useNavigate();
     function redirectToModule(id) {
-        window.location.assign([MODULE_ROUTE, id].join('/'));
+        navigate([MODULE_ROUTE, id].join('/'))
     }
 
     // console.log(modules)

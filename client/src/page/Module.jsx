@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 
 const Module = observer( () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const moduleId = location.pathname.split('/')[2]
+    // const location = useLocation();
+    // const moduleId = location.pathname.split('/')[2]
 
     const {module} = useContext(Context);
 
@@ -25,6 +25,10 @@ const Module = observer( () => {
             sideTwo: ""
         }
         module.setCards([...module.cards, newCard]);
+    }
+
+    const redirectToTraining = (name) => {
+        navigate(CARD_ROUTE);
     }
 
     return (
@@ -39,13 +43,13 @@ const Module = observer( () => {
                 {/*дестр*/}
                 <div className="buttons-wrapper">
                     <div className="button-container">
-                        <Container><Button onClick={() => navigate(CARD_ROUTE)}>Повторение</Button></Container>
+                        <Container><Button onClick={() => redirectToTraining('repeat')}>Повторение</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Container><Button onClick={() => navigate(CARD_ROUTE)}>Заучивание</Button></Container>
+                        <Container><Button onClick={() => redirectToTraining('memorization')}>Заучивание</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Container><Button onClick={() => navigate(CARD_ROUTE)}>Тест</Button></Container>
+                        <Container><Button onClick={() => redirectToTraining('test')}>Тест</Button></Container>
                     </div>
                     <div className="button-container">
                         <Container><Button>lorem</Button></Container>

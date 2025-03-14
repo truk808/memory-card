@@ -49,10 +49,18 @@ const Group = observer(() => {
                         placeholder='Поиск модулей'
                         className='login'/>
                 </div>
-                <FilterModules searchText={searchText} group={group} />
+                <FilterModules
+                    searchText={searchText}
+                    group={group} />
             </div>
-            <AddModule modalActive={moduleModalActive} setModalActive={setModuleModalActive} group={group}/>
-            <AddGroup modalActive={groupModalActive} setModalActive={setGroupModalActive} group={group}/>
+            <AddModule
+                modalActive={moduleModalActive}
+                setModalActive={setModuleModalActive}
+                group={group}/>
+            <AddGroup
+                modalActive={groupModalActive}
+                setModalActive={setGroupModalActive}
+                group={group}/>
         </div>
     );
 });

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import Modal from "../UI/modal/Modal";
 import Input from "../UI/input/Input";
 import Button from "../UI/button/Button";
@@ -9,6 +9,10 @@ import CheckModule from "../checkModule/CheckModule";
 const AddModule = ({modalActive, setModalActive, group}) => {
     const [name, setName] = React.useState('');
     const [modulesId, setModulesId] = React.useState([]);
+
+    const modules = useMemo(() => {
+        return group.modules
+    }, [group.modules]);
 
     function addNewGroup() {
         const newGroup = {
@@ -49,7 +53,7 @@ const AddModule = ({modalActive, setModalActive, group}) => {
                     <h1 className={styles.text}>Выбрать модули</h1>
                     <div className={styles.scrollContainer}>
                         {
-                            group.modules.map(module => (
+                            modules.map(module => (
                                 <CheckModule
                                     module={module}
                                     onChange={handleToggleModule}
