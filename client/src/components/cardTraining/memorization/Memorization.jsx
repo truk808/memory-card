@@ -6,11 +6,10 @@ import styles from "./Memoraization.module.css";
 
 const Memorization = observer(({module}) => {
     const answers = useMemo(() => {
-        const learningCards = [...module.learningCards];
-        const answerCorrect = learningCards.shift();
+        const answerCorrect = module.activeCard;
         const answerWrong = module.cards.filter(card => card.id !== answerCorrect.id).sort(() => Math.random() - 0.5).splice(0, 3);
-        const answers = [...answerWrong, answerCorrect].sort(() => Math.random() - 0.5);
-        return answers
+        const answers = [...answerWrong, answerCorrect];
+        return answers.sort(() => Math.random() - 0.5);
     }, [module.activeCard]);
 
     const handleAnswer = (sideOne) => {

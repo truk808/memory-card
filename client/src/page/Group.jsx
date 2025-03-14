@@ -1,7 +1,5 @@
 import React, {useContext, useState} from 'react';
 import '../style/group.css'
-import GroupList from "../components/groupList/GroupList";
-import ModuleList from "../components/moduleList/ModuleList";
 import Button from "../components/UI/button/Button";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
@@ -9,12 +7,14 @@ import iconPlus from "../img/icon/icon-plus.svg"
 import iconAddGroup from "../img/icon/icon-add-group.svg"
 import AddModule from "../components/addModule/AddModule";
 import AddGroup from "../components/addGruop/AddGroup";
+import Input from "../components/UI/input/Input";
+import FilterModules from "../components/filterModules/FilterModules";
 
 const Group = observer(() => {
+    const [searchText, setSearchText] = useState('')
     const [moduleModalActive, setModuleModalActive] = useState(false);
     const [groupModalActive, setGroupModalActive] = useState(false);
     const {group} = useContext(Context);
-    const modules = group.getUngroupedModules()
 
     return (
         <div className="page">
@@ -42,13 +42,14 @@ const Group = observer(() => {
                         </div>
                     </div>
                 </div>
-                <div className="group-wrapper">
-                    <GroupList groups={group}/>
+                <div className="search-input-container">
+                    <Input
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                        placeholder='Поиск модулей'
+                        className='login'/>
                 </div>
-                <hr className='separation'/>
-                <div className="module-wrapper">
-                    <ModuleList modules={modules}/>
-                </div>
+                <FilterModules searchText={searchText} group={group} />
             </div>
             <AddModule modalActive={moduleModalActive} setModalActive={setModuleModalActive} group={group}/>
             <AddGroup modalActive={groupModalActive} setModalActive={setGroupModalActive} group={group}/>

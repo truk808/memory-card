@@ -50,6 +50,7 @@ const Module = observer( () => {
                     <div className="button-container">
                         <Container><Button>lorem</Button></Container>
                     </div>
+                    {/*дестр*/}
                 </div>
                 <div className="card-wrapper">
                     <hr className='separation'/>

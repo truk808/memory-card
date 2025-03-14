@@ -14,7 +14,7 @@ const Card = observer(() => {
 
     return (
         <div className='card'>
-            {/*<Repeat cards={module.cards} module={module} />*/}
+            {/*<Repeat module={module} />*/}
             {/*<Memorization module={module}/>*/}
             <Test module={module}/>
         </div>
