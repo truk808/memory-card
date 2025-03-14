@@ -5,6 +5,7 @@ import Container from "../../UI/container/Container";
 import styles from "./Memoraization.module.css";
 
 const Memorization = observer(({module}) => {
+    console.log('sdwsd');
     const answers = useMemo(() => {
         const answerCorrect = module.activeCard;
         const answerWrong = module.cards.filter(card => card.id !== answerCorrect.id).sort(() => Math.random() - 0.5).splice(0, 3);

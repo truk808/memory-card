@@ -27,8 +27,8 @@ const Module = observer( () => {
         module.setCards([...module.cards, newCard]);
     }
 
-    const redirectToTraining = (name) => {
-        navigate(CARD_ROUTE);
+    const redirectToTraining = (nameTraining) => {
+        navigate(`${CARD_ROUTE}?nameTraining=${nameTraining}`);
     }
 
     return (
