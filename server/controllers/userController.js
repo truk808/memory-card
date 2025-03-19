@@ -2,7 +2,6 @@ const ApiError = require("../error/ApiError");
 const bcrypt = require("bcrypt");
 const {User} = require("../models/models");
 const jwt = require("jsonwebtoken");
-const {user} = require("pg/lib/native");
 
 const generateJwt = (id, email, subscription) => {
     return jwt.sign(
@@ -49,8 +48,8 @@ class UserController {
 
     async check(req, res, next) {
         res.json("Успешно")
-        // const token = generateJwt(user.id, user.email, user.subscription);
-        // return res.json({token})
+        const token = generateJwt(req.user.id, req.user.email, req.user.subscription);
+        return res.json({token})
     }
 }
 
