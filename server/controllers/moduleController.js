@@ -3,8 +3,14 @@ const ApiError = require("../error/ApiError");
 
 class ModuleController {
     async getModules(req, res, next) {
-        const {userId} = req.body
+        const {userId} = req.query;
         const modules = await Module.findAll({where: {userId: userId}});
+        return res.json(modules)
+    }
+
+    async getOneModule(req, res, next) {
+        const {moduleId} = req.query;
+        const modules = await Module.findOne({where: {id: moduleId}})
         return res.json(modules)
     }
 

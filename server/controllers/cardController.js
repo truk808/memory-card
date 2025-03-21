@@ -10,6 +10,12 @@ class CardController {
         return res.json(card)
     }
 
+        async getCardFromModule(req, res, next) {
+        const {moduleId} = req.query;
+        const cards = await Card.findAll({where: {moduleId: moduleId}});
+        return res.json(cards)
+    }
+
     async create(req, res, next) {
         try {
             const {moduleId, sideOne, sideTwo} = req.body;

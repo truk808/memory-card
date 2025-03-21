@@ -3,7 +3,7 @@ const {Group} = require("../models/models");
 
 class GroupController {
     async getGroups(req, res, next) {
-        const {userId} = req.body
+        const {userId} = req.query
         const groups = await Group.findAll({where: {userId: userId}});
         // const groups = await Group.findAll();
         return res.json(groups)

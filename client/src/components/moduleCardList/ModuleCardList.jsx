@@ -1,7 +1,8 @@
 import React from 'react';
 import ModuleCardItem from "../moduleCardItem/ModuleCardItem";
+import {observer} from "mobx-react-lite";
 
-const ModuleCardList = ({ module, cards }) => {
+const ModuleCardList = observer( ({ module, cards }) => {
     return (
         <div>
             {cards.map((card) => (
@@ -9,6 +10,6 @@ const ModuleCardList = ({ module, cards }) => {
             ))}
         </div>
     );
-};
+});
 
 export default ModuleCardList;

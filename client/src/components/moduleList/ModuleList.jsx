@@ -3,8 +3,9 @@ import styles from './moduleList.module.css';
 import ModuleItem from "../moduleItem/ModuleItem";
 import {ABOUT_ROUTE, MODULE_ROUTE} from "../../utils/consts";
 import {useNavigate} from "react-router-dom";
+import {observer} from "mobx-react-lite";
 
-const ModuleList = ({modules, groups}) => {
+const ModuleList = observer(({modules, groups}) => {
 
     return (
         <div>
@@ -15,6 +16,6 @@ const ModuleList = ({modules, groups}) => {
             )}
         </div>
     );
-};
+});
 
 export default ModuleList;

@@ -4,7 +4,7 @@ const ApiError = require("../error/ApiError");
 class groupModuleController {
     async getUserModulesFromGroups (req, res, next) {
         try {
-            const {userId} = req.body
+            const {userId} = req.query
 
             if (!userId) {
                 return next(ApiError.badRequest("пользователь не найден"));

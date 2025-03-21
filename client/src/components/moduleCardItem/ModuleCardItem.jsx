@@ -25,13 +25,13 @@ const ModuleCardItem = observer(({card, module}) => {
                     <div className={styles.inputWrapper}>
                         <div className={styles.inputContainer}>
                             <Input
-                                value={card.sideOne}
-                                onChange={handleInputChange("sideOne")}/>
+                                value={card.side_one}
+                                onChange={handleInputChange("side_one")}/>
                         </div>
                         <div className={styles.inputContainer}>
                             <Input
-                                value={card.sideTwo}
-                                onChange={handleInputChange("sideTwo")}/>
+                                value={card.side_two}
+                                onChange={handleInputChange("side_two")}/>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,6 @@ const router = new Router()
 const GroupModuleController = require("../controllers/groupModuleController");
 
 router.post('/', GroupModuleController.addModuleToGroup);
-router.get('/all-group-module-user', GroupModuleController.getUserModulesFromGroups);
+router.get('/', GroupModuleController.getUserModulesFromGroups);
 
 module.exports  = router

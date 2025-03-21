@@ -2,44 +2,24 @@ import { makeAutoObservable } from "mobx";
 
 export default class GroupStore {
     constructor() {
-        this._groups = [
-            {id: 1, name: "Group 1"},
-            {id: 2, name: "Group 2"},
-            {id: 3, name: "Group 3"},
-        ];
-        this._modules = [
-            {id: 1, name: "module 1", description: 'lorem'},
-            {id: 2, name: "module 2", description: 'lorem'},
-            {id: 3, name: "module 3", description: 'lorem'},
-            {id: 4, name: "module 4", description: 'lorem'},
-            {id: 5, name: "module 5", description: 'lorem'},
-            {id: 6, name: "module 6", description: 'lorem'},
-            {id: 7, name: "module 7", description: 'lorem'},
-            {id: 8, name: "module 8", description: 'lorem'},
-            {id: 9, name: "module 9", description: 'lorem'},
-            {id: 10, name: "module 10", description: 'lorem'},
-
-        ];
-        this._groupsSelected = [
-
-        ]
-        this._group_modules = [
-            {id: 1, groups_id: 1, modules_id: 1},
-            {id: 2, groups_id: 1, modules_id: 2},
-            {id: 4, groups_id: 1, modules_id: 4},
-            {id: 5, groups_id: 1, modules_id: 5},
-            {id: 6, groups_id: 1, modules_id: 6},
-            {id: 7, groups_id: 1, modules_id: 7},
-            {id: 8, groups_id: 2, modules_id: 1},
-            {id: 3, groups_id: 2, modules_id: 3},
-
-        ];
+        this._groups = [];
+        this._modules = [];
+        this._groupsSelected = []
+        this._group_modules = [];
 
         makeAutoObservable(this);
     }
 
+    setGroups(groups) {
+        this._groups = groups;
+    }
+
     setModules(modules) {
         this._modules = modules;
+    }
+
+    setGroupModules(groupModule) {
+        this._group_modules = groupModule;
     }
 
     setGroupsSelected(id) {

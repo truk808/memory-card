@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Input from "../components/UI/input/Input";
 import '../style/module.css'
 import icon from "../img/icon/icon-globe.svg";
@@ -10,15 +10,19 @@ import {useLocation} from "react-router-dom";
 import Container from "../components/UI/container/Container";
 import {CARD_ROUTE} from "../utils/consts";
 import { useNavigate } from "react-router-dom";
+import {getModules, getOneModule} from "../http/moduleAPI";
+import {getCardsFromModules} from "../http/cardAPI";
 
 const Module = observer( () => {
+
+
+
     const navigate = useNavigate();
-    // const location = useLocation();
-    // const moduleId = location.pathname.split('/')[2]
-
+    const location = useLocation();
+    const moduleId = location.pathname.split('/')[2]
     const {module} = useContext(Context);
-
     const handleAddCard = () => {
+
         const newCard = {
             id: Date.now(),
             sideOne: "",
@@ -26,10 +30,19 @@ const Module = observer( () => {
         }
         module.setCards([...module.cards, newCard]);
     }
-
     const redirectToTraining = (nameTraining) => {
+
         navigate(`${CARD_ROUTE}?nameTraining=${nameTraining}`);
     }
+
+    useEffect(() => {
+        getOneModule(moduleId).then((data) => {
+            module.setModule(data);
+        });
+        getCardsFromModules(moduleId).then((data) => {
+            module.setCards(data);
+        })
+    }, []);
 
     return (
         <div className="page">

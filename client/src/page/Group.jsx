@@ -9,16 +9,29 @@ import AddModule from "../components/addModule/AddModule";
 import AddGroup from "../components/addGruop/AddGroup";
 import Input from "../components/UI/input/Input";
 import FilterModules from "../components/filterModules/FilterModules";
+import {getModules} from "../http/moduleAPI";
+import {getGroups} from "../http/groupAPI";
+import {getGroupModule} from "../http/groupModuleAPI";
 
 const Group = observer(() => {
     const [searchText, setSearchText] = useState('')
     const [moduleModalActive, setModuleModalActive] = useState(false);
     const [groupModalActive, setGroupModalActive] = useState(false);
     const {group} = useContext(Context);
+    const {user} = useContext(Context);
 
     useEffect(() => {
+        getGroupModule(user.user.id).then(data => {
+            group.setGroupModules(data);
+        })
+        getGroups(user.user.id).then(data => {
+            group.setGroups(data);
+        })
+        getModules(user.user.id).then(data => {
+            group.setModules(data);
+        })
+    }, []);
 
-    }, [])
 
     return (
         <div className="page">

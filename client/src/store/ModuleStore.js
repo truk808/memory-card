@@ -2,17 +2,8 @@ import {makeAutoObservable} from "mobx";
 
 export default class ModuleStore {
     constructor() {
-        this._module = {id: 1, name: "der Leute"};
-        this._cards = [
-            {id: 1, sideOne: "der Mann", sideTwo: "Мужчина"},
-            {id: 2, sideOne: "die Frau", sideTwo: "Женщина"},
-            {id: 3, sideOne: "das Madchen", sideTwo: "Девочка"},
-            {id: 4, sideOne: "der Junge", sideTwo: "Мальчик"},
-            {id: 5, sideOne: "der Mensh", sideTwo: "Человек"},
-
-        ];
-        // this._learnedCard = [];
-        // this._notLearnedCard = [];
+        this._module = {};
+        this._cards = [];
         this._activeCard = null;
         this._learningCards = [];
         makeAutoObservable(this);
