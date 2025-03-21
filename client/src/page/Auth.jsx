@@ -1,14 +1,15 @@
 import React, {useContext, useState} from 'react';
 import '../style/auth.css'
-import {useLocation, useNavigate} from "react-router-dom";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
+import {ABOUT_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import logo from "../img/icon/logo.svg"
 import Input from "../components/UI/input/Input";
 import Button from "../components/UI/button/Button";
 import {login, registration} from "../http/userAPI";
+import {observer} from "mobx-react-lite";
 
-const Auth = () => {
+const Auth = observer( () => {
     const navigate = useNavigate();
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
@@ -17,11 +18,20 @@ const Auth = () => {
     const [password, setPassword] = useState("");
 
     async function handleClick() {
-        if (isLogin) {
-            const response = await login();
-        } else {
-            const response = await registration(email, password);
-            console.log(response)
+        try {
+            let data;
+            if (isLogin) {
+                data = await login(email, password);
+            } else {
+                data = await registration(email, password);
+                console.log(data)
+            }
+            user.setUser(data);
+            user.setIsAuth(true)
+            navigate(ABOUT_ROUTE);
+        } catch (e) {
+            console.log('error')
+            // alert(e.response.data.message)
         }
     }
 
@@ -54,9 +64,9 @@ const Auth = () => {
                 <div className="auth-button-wrapper">
                     <div className="auth-button-container">
                         {isLogin ?
-                            <a href={REGISTRATION_ROUTE}>Зарегистрироваться</a>
+                            <NavLink href={REGISTRATION_ROUTE}>Зарегистрироваться</NavLink>
                             :
-                            <a href={LOGIN_ROUTE}>Войти</a>
+                            <NavLink href={LOGIN_ROUTE}>Войти</NavLink>
                         }
                     </div>
                     <div className="auth-button-container">
@@ -71,6 +81,6 @@ const Auth = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Auth

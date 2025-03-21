@@ -9,6 +9,7 @@
 }
 
 .nav {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,4 +39,8 @@
 
 .nav-item-link:hover {
     color: black;
+}
+
+.exit {
+    margin-right: 10px;
 }

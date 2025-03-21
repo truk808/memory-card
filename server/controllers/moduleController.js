@@ -2,32 +2,21 @@ const {Module} = require('../models/models');
 const ApiError = require("../error/ApiError");
 
 class ModuleController {
-    async create(req, res) {
-        const {name} = req.body;
-        const module = await Module.create({name})
-        return res.json(module)
-    }
-
-    async getAll(req, res) {
-        const modules = await Module.findAll()
+    async getModules(req, res, next) {
+        const {userId} = req.body
+        const modules = await Module.findAll({where: {userId: userId}});
         return res.json(modules)
     }
 
-    async getOne(req, res) {
-        const {id} = req.params
-        const module = await Module.findOne(
-            {
-                where: {id},
-            }
-        )
-        return res.json(module)
+    async createModule(req, res, next) {
+        const {userId, name, description} = req.body;
+        const modules = await Module.create({name, userId, description});
+        return res.json(modules)
     }
 
     async delete(req, res) {
 
     }
 }
-
-``
 
 module.exports = new ModuleController()

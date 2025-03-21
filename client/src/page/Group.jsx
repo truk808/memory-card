@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import '../style/group.css'
 import Button from "../components/UI/button/Button";
 import {observer} from "mobx-react-lite";
@@ -15,6 +15,10 @@ const Group = observer(() => {
     const [moduleModalActive, setModuleModalActive] = useState(false);
     const [groupModalActive, setGroupModalActive] = useState(false);
     const {group} = useContext(Context);
+
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div className="page">

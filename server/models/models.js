@@ -74,4 +74,5 @@ module.exports = {
     ModuleStats,
     Card,
     GameStats,
+    GroupModule,
 }

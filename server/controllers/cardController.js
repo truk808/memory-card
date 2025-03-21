@@ -1,28 +1,29 @@
-const {Card} = require('../models/models');
+const {Card, Module} = require('../models/models');
 const ApiError = require("../error/ApiError");
 const uuid = require("uuid");
 const path = require("path");
 
 class CardController {
+    async getAll(req, res) {
+        const {moduleId} = req.body
+        const card = await Card.findAll({where: {moduleId: moduleId}});
+        return res.json(card)
+    }
+
     async create(req, res, next) {
         try {
-            const {module_id, side_one, side_two} = req.body;
+            const {moduleId, sideOne, sideTwo} = req.body;
             const {img} = req.files;
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName));
 
-            const card = await Card.create({module_id, side_one, side_two, img: fileName});
+            const card = await Card.create({moduleId, sideOne, sideTwo, img: fileName});
 
             res.json(card);
         } catch (e) {
             next(ApiError.badRequest(e.message));
         }
 
-    }
-
-    async getAll(req, res) {
-        const cards = await Card.findAll()
-        res.json(cards)
     }
 
     async delete(req, res) {
