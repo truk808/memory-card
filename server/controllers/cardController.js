@@ -2,6 +2,8 @@ const {Card, Module} = require('../models/models');
 const ApiError = require("../error/ApiError");
 const uuid = require("uuid");
 const path = require("path");
+const {where} = require("sequelize");
+const {logger} = require("sequelize/lib/utils/logger");
 
 // const {img} = req.files;
 // let fileName = uuid.v4() + ".jpg"
@@ -32,14 +34,15 @@ class CardController {
 
     async updateCard(req, res, next) {
         const {newCard} = req.body;
-        const {cardId} = req.params;
-        const card = Card.findOne(card => card.id == cardId);
+        const {id} = req.params;
+        const card = await Card.findOne({where: {id}});
         if (!card) {
             return next(ApiError.badRequest("Карта не найдена"));
         }
         card.side_one = newCard.side_one;
         card.side_two = newCard.side_two;
         card.img = newCard.img;
+        await card.save();
         return res.json(card);
     }
 

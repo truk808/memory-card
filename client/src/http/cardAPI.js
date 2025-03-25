@@ -11,6 +11,7 @@ export const createCard = async (moduleId) => {
 }
 
 export const updateCard = async (newCard, cardId) => {
-    const {data} = await $authHost.put('api/card/', {body: {newCard}, params: {cardId}});
+    console.log(cardId)
+    const {data} = await $authHost.put(`api/card/${cardId}`, {newCard});
     return data;
 }

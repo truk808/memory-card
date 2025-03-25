@@ -25,15 +25,8 @@ export default class ModuleStore {
         this._learningCards = cards;
     }
 
-    setCard(newCard) {
-        const card = this._cards.find(card => card.id === newCard.id);
-        console.log(card);
-        if (!card) {
-            console.log("No card with id " + newCard.id);
-        } else {
-
-        }
-
+    setCard(id, newCard) {
+        this._cards = this._cards.map(card => card.id === id ? { ...card, ...newCard } : card);
     }
 
     nextCard() {
@@ -46,13 +39,6 @@ export default class ModuleStore {
             this.setActiveCard(null);
         }
     }
-
-    // updateCard(id, side, value) {
-    //     const card = this._cards.find(card => card.id === id);
-    //     if (card) {
-    //         card[side] = value;
-    //     }
-    // }
 
     updateModule(value) {
         this._module.name = value

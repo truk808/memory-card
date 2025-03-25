@@ -9,8 +9,15 @@ import {updateCard} from "../../http/cardAPI";
 
 const ModuleCardItem = observer(({card, module}) => {
     const handleInputChange = (side) => (e) => {
-        const newCart = {}
-        module.updateCard(card.id, side, e.target.value);
+        const newCard = {
+            ...card,
+            [side]: e.target.value
+        };
+
+        updateCard(newCard, card.id).then(data => {
+            module.setCard(card.id, data);
+        });
+
     }
 
     return (
