@@ -3,8 +3,9 @@ import styles from './groupItem.module.css'
 import ModuleList from "../../components/moduleList/ModuleList"
 import arrowDown from "../../img/icon/icon-arrow-downsvg.svg"
 import arrowRight from "../../img/icon/icon-arrow-right.svg"
+import {observer} from "mobx-react-lite";
 
-const GroupItem = ({group, groups, modules, active, onClick}) => {
+const GroupItem = observer( ({group, groups, modules, active, onClick}) => {
     return (
         <div className={styles.groupItem} onClick={onClick}>
             <div className={styles.title}>
@@ -18,6 +19,6 @@ const GroupItem = ({group, groups, modules, active, onClick}) => {
             </div>
         </div>
     );
-};
+});
 
 export default GroupItem;

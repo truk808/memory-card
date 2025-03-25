@@ -18,6 +18,7 @@ const FilterModules = observer(({searchText, group}) => {
                     :
                     <>
                         <GroupList groups={group}/>
+                        <hr className="separation"/>
                         <ModuleList modules={modules} groups={group}/>
                     </>
             }

@@ -3,6 +3,10 @@ const ApiError = require("../error/ApiError");
 const uuid = require("uuid");
 const path = require("path");
 
+// const {img} = req.files;
+// let fileName = uuid.v4() + ".jpg"
+// img.mv(path.resolve(__dirname, '..', 'static', fileName));
+
 class CardController {
     async getAll(req, res) {
         const {moduleId} = req.body
@@ -16,20 +20,27 @@ class CardController {
         return res.json(cards)
     }
 
-    async create(req, res, next) {
+    async createCard(req, res, next) {
         try {
-            const {moduleId, sideOne, sideTwo} = req.body;
-            const {img} = req.files;
-            let fileName = uuid.v4() + ".jpg"
-            img.mv(path.resolve(__dirname, '..', 'static', fileName));
-
-            const card = await Card.create({moduleId, sideOne, sideTwo, img: fileName});
-
+            const {moduleId} = req.body;
+            const card = await Card.create({moduleId, side_one: '', side_two: '', img: "defult"});
             res.json(card);
         } catch (e) {
             next(ApiError.badRequest(e.message));
         }
+    }
 
+    async updateCard(req, res, next) {
+        const {newCard} = req.body;
+        const {cardId} = req.params;
+        const card = Card.findOne(card => card.id == cardId);
+        if (!card) {
+            return next(ApiError.badRequest("Карта не найдена"));
+        }
+        card.side_one = newCard.side_one;
+        card.side_two = newCard.side_two;
+        card.img = newCard.img;
+        return res.json(card);
     }
 
     async delete(req, res) {

@@ -5,9 +5,11 @@ import Input from "../UI/input/Input";
 import icon from "../../img/icon/icon-question.svg";
 import deleteIcon from "../../img/icon/icon-cross.svg"
 import styles from "./moduleCardItem.module.css";
+import {updateCard} from "../../http/cardAPI";
 
 const ModuleCardItem = observer(({card, module}) => {
     const handleInputChange = (side) => (e) => {
+        const newCart = {}
         module.updateCard(card.id, side, e.target.value);
     }
 

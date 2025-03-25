@@ -1,12 +1,16 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useContext, useEffect, useMemo} from 'react';
 import Modal from "../UI/modal/Modal";
 import Input from "../UI/input/Input";
 import Button from "../UI/button/Button";
 import styles from "./addGroup.module.css"
 import iconPlus from "../../img/icon/icon-plus.svg";
 import CheckModule from "../checkModule/CheckModule";
+import {createGroup} from "../../http/groupAPI";
+import {Context} from "../../index";
+import {createGroupModule} from "../../http/groupModuleAPI";
 
 const AddModule = ({modalActive, setModalActive, group}) => {
+    const {user} = useContext(Context);
     const [name, setName] = React.useState('');
     const [modulesId, setModulesId] = React.useState([]);
 
@@ -15,19 +19,18 @@ const AddModule = ({modalActive, setModalActive, group}) => {
     }, [group.modules]);
 
     function addNewGroup() {
-        const newGroup = {
-            id: Date.now(),
-            name: name,
-        }
-        group.addGroup(newGroup);
+        createGroup(user.user.id, name).then( dataGroup => {
+            group.addGroup(dataGroup)
+            modulesId.forEach((moduleId) => {
+                createGroupModule(moduleId, dataGroup.id).then( dataGroupModule => {
+                    console.log(dataGroupModule)
+                    group.addModuleInGroup(dataGroupModule)
+                })
+                setModulesId([])
+                setName('')
+        })
 
-        modulesId.forEach((moduleId) => {
-            const ModuleInGroup = {
-                id: Date.now(),
-                groups_id: newGroup.id,
-                modules_id: moduleId
-            }
-            group.addModuleInGroup(ModuleInGroup)
+
         })
     }
 
@@ -68,9 +71,7 @@ const AddModule = ({modalActive, setModalActive, group}) => {
                         <Button
                             icon={iconPlus}
                             className={'purple'}
-                            onClick={() => {
-                                addNewGroup()
-                            }}
+                            onClick={() => {addNewGroup()}}
                         >
                             Создать группу
                         </Button>

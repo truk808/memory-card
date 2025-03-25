@@ -9,7 +9,7 @@ const Test = observer(({module}) => {
 
     const handleKeyPress = (event) => {
         if(event.key === 'Enter'){
-            if(text === module.activeCard.sideOne){
+            if(text === module.activeCard.side_one){
                 module.nextCard()
                 setText('')
             } else {
@@ -24,7 +24,7 @@ const Test = observer(({module}) => {
 
     return (
         <div className={styles.test}>
-            <h1 className={styles.text}>{module.activeCard.sideTwo}</h1>
+            <h1 className={styles.text}>{module.activeCard.side_two}</h1>
             <div>
                 <Input
                     placeholder={'Введите первую сторону'}

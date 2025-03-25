@@ -37,7 +37,7 @@ const Card = sequelize.define('card', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     side_one: {type: DataTypes.STRING},
     side_two: {type: DataTypes.STRING},
-    img: {type: DataTypes.STRING, allowNull: false},
+    img: {type: DataTypes.STRING, allowNull: true},
 })
 
 const GameStats = sequelize.define('game_stats', {

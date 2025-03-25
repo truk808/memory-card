@@ -1,5 +1,7 @@
 const {Module} = require('../models/models');
 const ApiError = require("../error/ApiError");
+const uuid = require("uuid");
+const path = require("path");
 
 class ModuleController {
     async getModules(req, res, next) {
@@ -16,7 +18,12 @@ class ModuleController {
 
     async createModule(req, res, next) {
         const {userId, name, description} = req.body;
-        const modules = await Module.create({name, userId, description});
+
+        // const {img} = req.files;
+        // let fileName = uuid.v4() + ".jpg"
+        // img.mv(path.resolve(__dirname, '..', 'static', fileName));
+
+        const modules = await Module.create({name, userId, description, img: null});
         return res.json(modules)
     }
 

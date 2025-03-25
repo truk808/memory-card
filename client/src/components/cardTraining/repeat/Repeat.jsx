@@ -31,7 +31,7 @@ const Repeat = observer(({module}) => {
                         className={`${styles.card} ${flipped ? styles.flipped : ''}`}
                         onClick={handleFlip}
                     >
-                        {flipped ? module.activeCard.sideTwo : module.activeCard.sideOne}
+                        {flipped ? module.activeCard.side_two : module.activeCard.side_one}
                     </div>
                     <Button onClick={() => handleClick(false)}> \--- </Button>
                     <Button onClick={() => handleClick(true)}> ---/ </Button>

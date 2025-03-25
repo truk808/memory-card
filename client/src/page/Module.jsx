@@ -11,27 +11,27 @@ import Container from "../components/UI/container/Container";
 import {CARD_ROUTE} from "../utils/consts";
 import { useNavigate } from "react-router-dom";
 import {getModules, getOneModule} from "../http/moduleAPI";
-import {getCardsFromModules} from "../http/cardAPI";
+import {createCard, getCardsFromModules} from "../http/cardAPI";
 
 const Module = observer( () => {
-
-
-
     const navigate = useNavigate();
     const location = useLocation();
     const moduleId = location.pathname.split('/')[2]
     const {module} = useContext(Context);
+
+    // module.setCard(  {id: 6,
+    //     img: "7e4f85bd-4fa2-4cc4-9e02-277b9c990c5b.jpg",
+    //     moduleId: 1,
+    //     side_one: "der Mensh",
+    //     side_two: "человек",})
+
     const handleAddCard = () => {
-
-        const newCard = {
-            id: Date.now(),
-            sideOne: "",
-            sideTwo: ""
-        }
-        module.setCards([...module.cards, newCard]);
+        createCard(moduleId).then((data) => {
+            module.setCards([...module.cards, data]);
+        });
     }
-    const redirectToTraining = (nameTraining) => {
 
+    const redirectToTraining = (nameTraining) => {
         navigate(`${CARD_ROUTE}?nameTraining=${nameTraining}`);
     }
 

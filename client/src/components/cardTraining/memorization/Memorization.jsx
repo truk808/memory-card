@@ -14,7 +14,7 @@ const Memorization = observer(({module}) => {
     }, [module.activeCard]);
 
     const handleAnswer = (sideOne) => {
-        if (sideOne === module.activeCard.sideOne) {
+        if (sideOne === module.activeCard.side_one) {
             module.nextCard();
         } else {
             console.log("Ответ немправильный ")
@@ -25,13 +25,13 @@ const Memorization = observer(({module}) => {
         <div className={styles.page}>
             <div className={styles.pageWrapper}>
                 <div className={styles.title}>
-                    <p>{module.activeCard.sideOne}</p>
+                    <p>{module.activeCard.side_one}</p>
                 </div>
                 <div className={styles.buttonWrapper}>
                     {answers.map((answer) => (
                         <div className={styles.buttonContainer} key={answer.id}>
                             <Container>
-                                <Button onClick={() => handleAnswer(answer.sideOne)}>{answer.sideTwo}</Button>
+                                <Button onClick={() => handleAnswer(answer.side_one)}>{answer.side_two}</Button>
                             </Container>
                         </div>
                     ))}
