@@ -2,7 +2,7 @@ import {makeAutoObservable} from "mobx";
 
 export default class ModuleStore {
     constructor() {
-        this._module = {};
+        this._module = {}; // {name: "123123", descriptions: "2222222222`"}
         this._cards = [];
         this._activeCard = null;
         this._learningCards = [];

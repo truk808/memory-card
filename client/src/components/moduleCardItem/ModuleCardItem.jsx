@@ -5,9 +5,10 @@ import Input from "../UI/input/Input";
 import icon from "../../img/icon/icon-question.svg";
 import deleteIcon from "../../img/icon/icon-cross.svg"
 import styles from "./moduleCardItem.module.css";
-import {updateCard} from "../../http/cardAPI";
+import {deleteCard, updateCard} from "../../http/cardAPI";
 
 const ModuleCardItem = observer(({card, module}) => {
+
     const handleInputChange = (side) => (e) => {
         const newCard = {
             ...card,
@@ -20,12 +21,18 @@ const ModuleCardItem = observer(({card, module}) => {
 
     }
 
+    const handleDelete = () => {
+        deleteCard(card.id).then(data => {
+            module.deleteCard(card.id)
+        })
+    }
+
     return (
         <div className={styles.moduleCardItem}>
             <Container style='card'>
                 <div className={styles.delete}>
                     <img
-                        onClick={() => module.deleteCard(card.id)}
+                        onClick={() => handleDelete()}
                         src={deleteIcon}
                         alt="" className={[styles.icon, styles.delete].join(' ')}/>
                 </div>

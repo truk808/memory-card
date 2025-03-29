@@ -11,7 +11,11 @@ export const createCard = async (moduleId) => {
 }
 
 export const updateCard = async (newCard, cardId) => {
-    console.log(cardId)
     const {data} = await $authHost.put(`api/card/${cardId}`, {newCard});
+    return data;
+}
+
+export const deleteCard = async (cardId) => {
+    const {data} = await $authHost.delete(`api/card/${cardId}`);
     return data;
 }

@@ -1,7 +1,5 @@
-const {Module} = require('../models/models');
+const {Module, Card} = require('../models/models');
 const ApiError = require("../error/ApiError");
-const uuid = require("uuid");
-const path = require("path");
 
 class ModuleController {
     async getModules(req, res, next) {
@@ -27,8 +25,32 @@ class ModuleController {
         return res.json(modules)
     }
 
-    async delete(req, res) {
+    async updateModule(req, res, next) {
+        const {newModule} = req.body;
+        const {id} = req.params;
+        const module = await Module.findOne({where: {id}});
+        if (!module) {
+            return next(ApiError.badRequest("Модуль не найден"));
+        }
+        module.name = newModule.name;
+        module.description = newModule.description;
+        module.save()
+        return res.json(module);
+    }
 
+    async deleteModule(req, res, next) {
+        try {
+            const { id } = req.params;
+            const module = await Module.destroy({ where: { id } });
+
+            if (!module) {
+                return next(ApiError.badRequest("Модуль не найден"));
+            }
+
+            return res.json(module);
+        } catch (error) {
+            return next(ApiError.internal("Ошибка сервера"));
+        }
     }
 }
 

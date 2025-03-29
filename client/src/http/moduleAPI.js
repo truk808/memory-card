@@ -14,3 +14,13 @@ export const createModule = async (userId, name, description) => {
     const {data} = await $authHost.post('api/module/', {userId, name, description});
     return data;
 }
+
+export const updateModule = async (newModule, moduleId) => {
+    const {data} = await $authHost.put(`api/module/${moduleId}`, {newModule});
+    return data;
+}
+
+export const deleteModule = async (moduleId) => {
+    const {data} = await $authHost.delete(`api/module/${moduleId}`);
+    return data;
+}

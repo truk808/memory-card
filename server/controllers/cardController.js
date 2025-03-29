@@ -46,8 +46,19 @@ class CardController {
         return res.json(card);
     }
 
-    async delete(req, res) {
+    async deleteCard(req, res, next) {
+        try {
+            const { id } = req.params;
+            const card = await Card.destroy({ where: { id } });
 
+            if (!card) {
+                return next(ApiError.badRequest("Карта не найдена"));
+            }
+
+            return res.json(card);
+        } catch (error) {
+            return next(ApiError.internal("Ошибка сервера"));
+        }
     }
 }
 

@@ -53,6 +53,10 @@ export default class GroupStore {
         this._modules.push(module);
     }
 
+    removeModule(moduleId) {
+        this._modules = this._modules.filter(module => module.id !== moduleId);
+    }
+
     addGroup(group) {
         this._groups.push(group);
     }
