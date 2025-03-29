@@ -8,7 +8,7 @@ import {observer} from "mobx-react-lite";
 const ModuleList = observer(({modules, groups}) => {
 
     return (
-        <div>
+        <div className={styles.moduleList}>
             {modules.map((module) =>
                 <ModuleItem
                     key={module.id}

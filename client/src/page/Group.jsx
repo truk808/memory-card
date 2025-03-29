@@ -12,6 +12,7 @@ import FilterModules from "../components/filterModules/FilterModules";
 import {getModules} from "../http/moduleAPI";
 import {getGroups} from "../http/groupAPI";
 import {getGroupModule} from "../http/groupModuleAPI";
+import iconSearch from "../img/icon/icons8-поиск 1.svg"
 
 const Group = observer(() => {
     const [searchText, setSearchText] = useState('')
@@ -31,7 +32,6 @@ const Group = observer(() => {
             group.setModules(data);
         })
     }, []);
-
 
     return (
         <div className="page">
@@ -64,11 +64,12 @@ const Group = observer(() => {
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
                         placeholder='Поиск модулей'
-                        className='login'/>
+                        img={iconSearch}
+                        className='search'/>
                 </div>
                 <FilterModules
                     searchText={searchText}
-                    group={group} />
+                    group={group}/>
             </div>
             <AddModule
                 modalActive={moduleModalActive}

@@ -4,13 +4,17 @@ import ModuleList from "../../components/moduleList/ModuleList"
 import arrowDown from "../../img/icon/icon-arrow-downsvg.svg"
 import arrowRight from "../../img/icon/icon-arrow-right.svg"
 import {observer} from "mobx-react-lite";
+import iconChange from "../../img/icon/icon-pencil.svg"
 
 const GroupItem = observer( ({group, groups, modules, active, onClick}) => {
     return (
         <div className={styles.groupItem} onClick={onClick}>
-            <div className={styles.title}>
-                <img src={active ? arrowDown : arrowRight} alt=""/>
-                <h1 className={styles.titleText}>{group.name}</h1>
+            <div className={styles.titleHeader}>
+                <div className={styles.title}>
+                    <img src={active ? arrowDown : arrowRight} alt=""/>
+                    <h1 className={styles.titleText}>{group.name}</h1>
+                </div>
+                <img src={iconChange} alt="" className={styles.icon}/>
             </div>
             <div className={active ? [styles.moduleList, styles.active].join(' ') : styles.moduleList}>
                 {active ? <ModuleList

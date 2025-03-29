@@ -8,7 +8,7 @@ const GroupList = observer(({groups}) => {
         groups.setGroupsSelected(id);
     }
     return (
-        <div>
+        <div className={styles.groupList}>
             {groups.groups.map(group => (
                 <GroupItem
                     modules={groups.getModulesByGroup(group.id)}

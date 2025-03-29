@@ -10,7 +10,7 @@ import {Context} from "../../index";
 const AddModule = ({modalActive, setModalActive, group}) => {
     const {user} = useContext(Context);
     const[name, setName]= React.useState('');
-    const[description, setDescription] = React.useState(' ');
+    const[description, setDescription] = React.useState('');
 
     function addNewModule() {
         try {
@@ -36,7 +36,7 @@ const AddModule = ({modalActive, setModalActive, group}) => {
                     <Input
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        className='login'
+                        className='search'
                         placeholder='Название модуля'>
                     </Input>
                 </div>
@@ -44,7 +44,7 @@ const AddModule = ({modalActive, setModalActive, group}) => {
                     <Input
                         value={description}
                         onChange={e => setDescription(e.target.value)}
-                        className='login'
+                        className='search'
                         placeholder='Описание модуля'></Input>
                 </div>
                 <div className={styles.buttonWrapper}>

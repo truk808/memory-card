@@ -11,10 +11,11 @@
 
 .title-button-container {
     margin: 10px 10px ;
-    width: 230px;
+    width: 45%;
     height: 50px;
 }
 
 .search-input-container {
+    /*height: 50px;*/
     width: 70%;
 }

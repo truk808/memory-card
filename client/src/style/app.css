@@ -1,6 +1,6 @@
 body {
     background-color: #F9FAFB;
-    font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .page {
@@ -20,7 +20,7 @@ body {
     color: #000;
     font-size: 65px;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 70px;
 }
 
