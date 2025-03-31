@@ -1,8 +1,9 @@
 import { makeAutoObservable } from "mobx";
+import group from "../page/Group";
 
 export default class GroupStore {
     constructor() {
-        this._groups = [];
+        this._groups = []; // [{name: 'asasa', title:'qweqweqe', data:'12.12.1222'}, {name: 'asasa', title:'qweqweqe', data:'12.12.1222'}]
         this._modules = [];
         this._groupsSelected = []
         this._group_modules = [];
@@ -29,6 +30,15 @@ export default class GroupStore {
             this.removeGroupSelected(id);
         }
     }
+
+    updateNameGroup(groupId, newName) {
+        this._groups.forEach((group) => {
+            if (group.id === groupId) {
+                group.name = newName;
+            }
+        })
+    }
+
     // вернет модули из группы[groupId]
     getModulesByGroup(groupId) {
         return this._group_modules
@@ -53,16 +63,29 @@ export default class GroupStore {
         this._modules.push(module);
     }
 
+    addModuleInGroup(groupModule) {
+        const newGroupModule = {
+            id: groupModule.id,
+            groups_id : groupModule.groupId,
+            modules_id : groupModule.moduleId,
+        }
+        this._group_modules = [...this._group_modules, newGroupModule];
+    }
+
     removeModule(moduleId) {
         this._modules = this._modules.filter(module => module.id !== moduleId);
     }
 
-    addGroup(group) {
-        this._groups.push(group);
+    removeGroup(groupId) {
+        this._groups = this._groups.filter(group => group.id !== groupId);
     }
 
-    addModuleInGroup(groupModules) {
-        this._group_modules.push(groupModules);
+    removeModuleFromGroup(groupId) {
+       this._group_modules = this._group_modules.filter(groupModule => groupModule.groups_id !== groupId);
+    }
+
+    addGroup(group) {
+        this._groups.push(group);
     }
 
     get groups() {

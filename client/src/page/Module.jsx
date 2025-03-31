@@ -54,7 +54,6 @@ const Module = observer( () => {
 
     useEffect(() => {
         getOneModule(moduleId).then((data) => {
-            console.log(data);
             module.setModule(data);
         });
         getCardsFromModules(moduleId).then((data) => {

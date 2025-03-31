@@ -6,7 +6,7 @@ import {Context} from "../index";
 import iconPlus from "../img/icon/icon-plus.svg"
 import iconAddGroup from "../img/icon/icon-add-group.svg"
 import AddModule from "../components/addModule/AddModule";
-import AddGroup from "../components/addGruop/AddGroup";
+import GroupManager from "../components/groupManager/GroupManager";
 import Input from "../components/UI/input/Input";
 import FilterModules from "../components/filterModules/FilterModules";
 import {getModules} from "../http/moduleAPI";
@@ -18,11 +18,14 @@ const Group = observer(() => {
     const [searchText, setSearchText] = useState('')
     const [moduleModalActive, setModuleModalActive] = useState(false);
     const [groupModalActive, setGroupModalActive] = useState(false);
+    const [selectedGroup, setSelectedGroup] = useState([]);
+
     const {group} = useContext(Context);
     const {user} = useContext(Context);
 
     useEffect(() => {
         getGroupModule(user.user.id).then(data => {
+            // console.log(data)
             group.setGroupModules(data);
         })
         getGroups(user.user.id).then(data => {
@@ -68,6 +71,8 @@ const Group = observer(() => {
                         className='search'/>
                 </div>
                 <FilterModules
+                    setGroupModalActive={setGroupModalActive}
+                    setSelectedGroup={setSelectedGroup}
                     searchText={searchText}
                     group={group}/>
             </div>
@@ -75,10 +80,14 @@ const Group = observer(() => {
                 modalActive={moduleModalActive}
                 setModalActive={setModuleModalActive}
                 group={group}/>
-            <AddGroup
+            <GroupManager
                 modalActive={groupModalActive}
                 setModalActive={setGroupModalActive}
-                group={group}/>
+                groups={group}
+                selectedGroup={selectedGroup}
+                setSelectedGroup={setSelectedGroup}
+            />
+
         </div>
     );
 });

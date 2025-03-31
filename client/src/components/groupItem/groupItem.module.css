@@ -32,6 +32,13 @@
     margin: 15px;
     width: 59px;
     height: 59px;
+    opacity: 0.4;
+    transition: 0.3s;
+}
+
+.icon:hover {
+    opacity: 1;
+    scale: 1.1;
 }
 
 .moduleList {
