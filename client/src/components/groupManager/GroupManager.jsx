@@ -75,7 +75,6 @@ const GroupManager = ({modalActive, setModalActive, groups, selectedGroup, setSe
             addNewGroup()
         }
         setModalActive(false)
-
     }
 
     const changeGroup = (groupId, newName, newModulesId) => {
@@ -96,7 +95,6 @@ const GroupManager = ({modalActive, setModalActive, groups, selectedGroup, setSe
             setName('')
             setModalActive(false)
         })
-
     }
 
     return (
