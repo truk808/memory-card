@@ -17,6 +17,7 @@
 
 .nav {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,27 +25,43 @@
 
 .nav-list {
     display: flex;
+    height: 100%;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 21px 0 21px;
+    margin: 0 21px;
+    height: 100%;
+    border-bottom: rgba(54, 70, 210, 0) 2px solid;
+    opacity: 0.2;
+    cursor: pointer;
+    transition: opacity 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-item.active {
+    border-bottom: #3646D2 2px solid;
+    opacity: 1;
+}
+
+.nav-item.active .nav-item-link {
+    color: black;
 }
 
 .nav-item-img {
-
+    /* Возможно, нужно задать max-width или max-height */
 }
 
 .nav-item-link {
     text-decoration: none;
-    color: #9A9A9A;
     font-size: 25px;
     margin-left: 6px;
+    transition: color 0.3s ease;
 }
 
 .nav-item-link:hover {
+    opacity: 1;
     color: black;
 }
 

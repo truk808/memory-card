@@ -88,7 +88,6 @@ const GroupManager = ({modalActive, setModalActive, groups, selectedGroup, setSe
 
         newModulesId.forEach((moduleId) => {
             createGroupModule(moduleId, groupId).then(dataGroupModule => {
-                // console.log('dataGroupModule', dataGroupModule);
                 groups.addModuleInGroup(dataGroupModule)
             })
             setModulesId([])
@@ -137,7 +136,6 @@ const GroupManager = ({modalActive, setModalActive, groups, selectedGroup, setSe
                             </Button>
                         </div>
                     }
-
                     <div className={styles.buttonContainer}>
                         <Button
                             icon={iconPlus}
