@@ -25,7 +25,6 @@ const Group = observer(() => {
 
     useEffect(() => {
         getGroupModule(user.user.id).then(data => {
-            // console.log(data)
             group.setGroupModules(data);
         })
         getGroups(user.user.id).then(data => {

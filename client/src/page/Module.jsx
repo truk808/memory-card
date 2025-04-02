@@ -6,15 +6,13 @@ import Button from "../components/UI/button/Button";
 import ModuleCardList from "../components/moduleCardList/ModuleCardList";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import Container from "../components/UI/container/Container";
 import {CARD_ROUTE, GROUP_ROUTE} from "../utils/consts";
-import { useNavigate } from "react-router-dom";
-import {deleteModule, getModules, getOneModule, updateModule} from "../http/moduleAPI";
+import {deleteModule, getOneModule, updateModule} from "../http/moduleAPI";
 import {createCard, getCardsFromModules} from "../http/cardAPI";
-import {computed} from "mobx";
 
-const Module = observer( () => {
+const Module = observer(() => {
     const navigate = useNavigate();
     const location = useLocation();
     const moduleId = location.pathname.split('/')[2]
@@ -28,11 +26,13 @@ const Module = observer( () => {
     }
 
     const handleValueChange = (valueModule) => (e) => {
-        console.log('rgvrgrg')
+        console.log(module.module);
         const newModule = {
-            ...module,
-            [valueModule]: e.target.value
+            ...module.module,
+            [valueModule]: e.target.value,
         }
+
+        console.log(newModule)
 
         updateModule(newModule, module.module.id).then(data => {
             module.setModule(data);
@@ -67,12 +67,21 @@ const Module = observer( () => {
                 <button onClick={() => handleDeleteClick(moduleId)}> Удалить</button>
                 <div className="module-title">
                     <img src={icon} alt="" className="moudule-img"/>
-                    <div className="input-container">
-                        <Input value={module.module.name} onChange={handleValueChange('name')}/>
+                    <div className="input-wrapper">
+                        <div className="input-container">
+                            <Input
+                                className={'change'}
+                                value={module.module.name}
+                                onChange={handleValueChange('name')}/>
+                        </div>
+                        <div className="input-container">
+                            <Input
+                                className={'change'}
+                                value={module.module.description}
+                                onChange={handleValueChange('description')}/>
+                        </div>
                     </div>
-                    {/*<div className="input-container">*/}
-                    {/*    <Input value={module.module.description} onChange={handleValueChange('description') }/>*/}
-                    {/*</div>*/}
+
                 </div>
                 {/*дестр*/}
                 <div className="buttons-wrapper">
