@@ -33,15 +33,23 @@ class CardController {
     }
 
     async updateCard(req, res, next) {
-        const {newCard} = req.body;
+
+        console.log(req)
+
+        const {side_one, side_two} = req.body;
         const {id} = req.params;
+        const {img} = req.files;
+
+        let fileName = uuid.v4() + ".jpg"
+        img.mv(path.resolve(__dirname, '..', 'static', fileName));
+
         const card = await Card.findOne({where: {id}});
         if (!card) {
             return next(ApiError.badRequest("Карта не найдена"));
         }
-        card.side_one = newCard.side_one;
-        card.side_two = newCard.side_two;
-        card.img = newCard.img;
+        card.side_one = side_one;
+        card.side_two = side_two;
+        card.img = img;
         await card.save();
         return res.json(card);
     }

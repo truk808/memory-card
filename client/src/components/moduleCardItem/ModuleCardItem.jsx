@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {observer} from "mobx-react-lite";
 import Input from "../UI/input/Input";
 import deleteIcon from "../../img/icon/icon-cross.svg"
@@ -7,24 +7,9 @@ import {deleteCard, updateCard} from "../../http/cardAPI";
 import Image from "../UI/image/Image";
 
 const ModuleCardItem = observer(({card, module}) => {
-const [sideOne, setSideOne] = React.useState('');
-const [sideTwo, setSideTwo] = React.useState('');
-const [file, setFile] = React.useState('default');
-
-
-    const selectFile = (e) => {
-        setFile(e.target.files[0])  ;
-    }
 
     const handleInputChange = (side) => (e) => {
-        const newCard = {
-            ...card,
-            [side]: e.target.value
-        };
 
-        updateCard(newCard, card.id).then(data => {
-            module.setCard(card.id, data);
-        });
     }
 
     const handleDelete = () => {
@@ -37,7 +22,7 @@ const [file, setFile] = React.useState('default');
         <div className={styles.moduleCardItem}>
             <div className={styles.container}>
                 <Image
-                    selectFile={selectFile}
+                    // selectFile={}
                     src={[process.env.REACT_APP_API_URL, card.img].join("")}
                     alt=""/>
                 <div className={styles.containerDelIn}>

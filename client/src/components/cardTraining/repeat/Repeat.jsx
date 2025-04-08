@@ -30,27 +30,21 @@ const Repeat = observer(({module}) => {
         <div className={styles.repeat}>
             {/*<DraggableContainer>*/}
                     <div className={`${styles.card} ${flipped ? styles.flipped : ''}`} onClick={handleFlip}>
-                        <div className={[styles.iconContainer, styles.arrLeft].join(' ')}>
+                        <div className={styles.arrLeft}>
                             <img className={styles.icon} src={arrowLeft} onClick={() => handleClick(false)}/>
                         </div>
                         <p className={styles.text}>
                             {flipped ? module.activeCard.side_two : module.activeCard.side_one}
                         </p>
-                        <div className={styles.curvedArrow}>
+                        <div className={styles.curvedArrows}>
                             <div className={styles.iconContainer}>
-                                <img className={styles.icon} src={curvedArrowLeft} onClick={() => handleClick(true)}/>
+                                <img className={[styles.icon, styles.red].join(" ")} src={curvedArrowLeft} onClick={() => handleClick(true)}/>
                             </div>
                             <div className={styles.iconContainer}>
-                                <img className={styles.icon} src={curvedArrowRight} onClick={() => handleClick(true)}/>
+                                <img className={[styles.icon, styles.green].join(" ")} src={curvedArrowRight} onClick={() => handleClick(true)}/>
                             </div>
                         </div>
-
-
-
-
-
                     </div>
-
             {/*</DraggableContainer>*/}
         </div>
     );

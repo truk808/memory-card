@@ -9,28 +9,18 @@
     /*display: grid;*/
     /*grid-template-columns: repeat(4, 1fr);*/
     /*grid-template-rows: repeat(6, 1fr);*/
-
+    cursor: pointer;
     width: 400px;
     height: 500px;
     /*cursor: pointer;*/
     border-radius: 10px;
     border: 2px solid #000;
     background: #FFF;
+    padding: 10px;
 }
 
 .arrLeft {
     height: 10%;
-    background: red;
-}
-
-.iconContainer {
-    /*width: 59px;*/
-    /*height: 59px;*/
-}
-
-.icon {
-    /*width: 59px;*/
-    /*height: 5px;*/
 }
 
 .text {
@@ -41,9 +31,32 @@
     align-items: center;
 }
 
-.curvedArrow {
+.curvedArrows {
     height: 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.icon {
+    padding: 2px;
+    background-color: white;
+    border-radius: 25%;
+    width: 59px;
+    height: 59px;
+    opacity: 0.4;
+    transition: 0.3s;
+}
+
+.icon:hover {
+    background: rgba(0, 0, 0, 0.11);
+    opacity: 1;
+}
+
+.icon.red:hover {
+    background: rgba(255, 0, 0, 0.25);
+}
+
+.icon.green:hover {
+    background: rgba(100, 255, 0, 0.25);
 }
