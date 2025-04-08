@@ -6,10 +6,44 @@
 }
 
 .card {
+    /*display: grid;*/
+    /*grid-template-columns: repeat(4, 1fr);*/
+    /*grid-template-rows: repeat(6, 1fr);*/
+
+    width: 400px;
+    height: 500px;
+    /*cursor: pointer;*/
+    border-radius: 10px;
+    border: 2px solid #000;
+    background: #FFF;
+}
+
+.arrLeft {
+    height: 10%;
+    background: red;
+}
+
+.iconContainer {
+    /*width: 59px;*/
+    /*height: 59px;*/
+}
+
+.icon {
+    /*width: 59px;*/
+    /*height: 5px;*/
+}
+
+.text {
+    height: 80%;
+    margin: auto 0 auto 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 500px;
-    cursor: pointer;
+}
+
+.curvedArrow {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

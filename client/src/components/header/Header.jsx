@@ -23,7 +23,6 @@ const Header = () => {
     }
 
     useEffect(() => {
-        console.log(location.pathname)
         setNavItemActive(location.pathname)
     }, [location])
 

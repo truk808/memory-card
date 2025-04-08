@@ -5,6 +5,9 @@ import styles from './repeat.module.css';
 import Container from "../../UI/container/Container";
 import Button from "../../UI/button/Button";
 import DraggableContainer from "../../UI/draggableContainer/DraggableContainer";
+import arrowLeft from '../../../img/icon/icon-long-arrow.svg'
+import curvedArrowLeft from '../../../img/icon/icon-curved-arrow-left.svg'
+import curvedArrowRight from '../../../img/icon/icon-curved-arrow-right.svg'
 
 const Repeat = observer(({module}) => {
     const [flipped, setFlipped] = useState(false);
@@ -26,16 +29,28 @@ const Repeat = observer(({module}) => {
     return (
         <div className={styles.repeat}>
             {/*<DraggableContainer>*/}
-                <Container>
-                    <div
-                        className={`${styles.card} ${flipped ? styles.flipped : ''}`}
-                        onClick={handleFlip}
-                    >
-                        {flipped ? module.activeCard.side_two : module.activeCard.side_one}
+                    <div className={`${styles.card} ${flipped ? styles.flipped : ''}`} onClick={handleFlip}>
+                        <div className={[styles.iconContainer, styles.arrLeft].join(' ')}>
+                            <img className={styles.icon} src={arrowLeft} onClick={() => handleClick(false)}/>
+                        </div>
+                        <p className={styles.text}>
+                            {flipped ? module.activeCard.side_two : module.activeCard.side_one}
+                        </p>
+                        <div className={styles.curvedArrow}>
+                            <div className={styles.iconContainer}>
+                                <img className={styles.icon} src={curvedArrowLeft} onClick={() => handleClick(true)}/>
+                            </div>
+                            <div className={styles.iconContainer}>
+                                <img className={styles.icon} src={curvedArrowRight} onClick={() => handleClick(true)}/>
+                            </div>
+                        </div>
+
+
+
+
+
                     </div>
-                    <Button onClick={() => handleClick(false)}> \--- </Button>
-                    <Button onClick={() => handleClick(true)}> ---/ </Button>
-                </Container>
+
             {/*</DraggableContainer>*/}
         </div>
     );
