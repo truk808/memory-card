@@ -73,6 +73,23 @@ class CardController {
             return next(ApiError.internal("Ошибка сервера"));
         }
     }
+
+    async deleteImg(req, res, next) {
+        try {
+            const { id } = req.params;
+            const card = await Card.findByPk(id);
+            if (!card) {
+                return next(ApiError.badRequest("Карта не найдена"));
+            }
+
+            await card.update({ img: 'defult' });
+            card.save()
+
+            return res.json(card);
+        } catch (error) {
+            return next(ApiError.internal("Ошибка сервера"));
+        }
+    }
 }
 
 module.exports = new CardController()

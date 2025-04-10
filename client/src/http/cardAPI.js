@@ -19,3 +19,8 @@ export const deleteCard = async (cardId) => {
     const {data} = await $authHost.delete(`api/card/${cardId}`);
     return data;
 }
+
+export const deleteImg = async (cardId) => {
+    const {data} = await $authHost.put(`api/card/img/${cardId}`);
+    return data;
+}

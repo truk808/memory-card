@@ -3,7 +3,7 @@ import {observer} from "mobx-react-lite";
 import Input from "../UI/input/Input";
 import deleteIcon from "../../img/icon/icon-cross.svg"
 import styles from "./moduleCardItem.module.css";
-import {deleteCard, updateCard} from "../../http/cardAPI";
+import {deleteCard, deleteImg, updateCard} from "../../http/cardAPI";
 import Image from "../UI/image/Image";
 
 const ModuleCardItem = observer(({card, module}) => {
@@ -22,6 +22,12 @@ const ModuleCardItem = observer(({card, module}) => {
             setSideTwo(e.target.value);
         }
         handleUpdate();
+    }
+
+    const removeImg = () => {
+        deleteImg(card.id).then((data) => {
+            console.log(data)
+        })
     }
 
     const handleUpdate = async () => {
@@ -53,6 +59,7 @@ const ModuleCardItem = observer(({card, module}) => {
         <div className={styles.moduleCardItem}>
             <div className={styles.container}>
                 <Image
+                    removeImg={removeImg}
                     selectFile={handleFileChange}
                     src={[process.env.REACT_APP_API_URL, card.img].join("")}
                     alt=""

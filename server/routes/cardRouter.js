@@ -7,6 +7,6 @@ router.put('/:id', cardController.updateCard);
 router.get('/', cardController.getAll);
 router.get('/from-module/:id', cardController.getCardFromModule)
 router.delete('/:id', cardController.deleteCard);
-
+router.put('/img/:id', cardController.deleteImg);
 
 module.exports  = router

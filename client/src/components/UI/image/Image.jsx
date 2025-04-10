@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './image.module.css';
 
-const Image = ({ src, alt, selectFile }) => {
+const Image = ({ src, alt, selectFile, removeImg}) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -12,10 +12,17 @@ const Image = ({ src, alt, selectFile }) => {
         >
             <img src={src} alt={alt} className={[styles.image, isHovered ? styles.dimmed : ''].join(" ")}/>
             {/*<div type='file' className={[styles.overlay, isHovered ? styles.visible : ''].join(" ")}>Выбрать</div>*/}
-            <input
-                onChange={(e) => selectFile(e)}
-                className={[styles.overlay, isHovered ? styles.visible : ''].join(" ")}
-                type="file"/>
+            <div className={[styles.overlay, isHovered ? styles.visible : ''].join(" ")}>
+                <input
+                    onChange={(e) => selectFile(e)}
+                    type="file"/>
+                <button
+                onClick={() => removeImg()}
+                >
+                    удалить
+                </button>
+            </div>
+
         </div>
     );
 };

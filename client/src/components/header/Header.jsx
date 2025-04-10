@@ -6,8 +6,6 @@ import modules from '../../img/icon/icon-module.png'
 import {ABOUT_ROUTE, GROUP_ROUTE, LOGIN_ROUTE, WORKOUT_ROUTE} from "../../utils/consts";
 import {NavLink, useLocation} from "react-router-dom";
 import {Context} from "../../index";
-import {eventWrapper} from "@testing-library/user-event/dist/utils";
-
 
 
 const Header = () => {
@@ -22,6 +20,10 @@ const Header = () => {
         localStorage.removeItem('token')
     }
 
+    const logIn = () => {
+
+    }
+
     useEffect(() => {
         setNavItemActive(location.pathname)
     }, [location])
@@ -30,21 +32,29 @@ const Header = () => {
         <div className="header-wrapper">
             <div className='header'>
                 <div className="nav">
-                    <ul className="nav-list">
-                        <li className={`nav-item ${navItemActive === ABOUT_ROUTE ? 'active' : ''}`}>
-                            <img src={question} alt="" className="nav-item-img"/>
-                            <NavLink to={ABOUT_ROUTE} className="nav-item-link">О нас</NavLink>
-                        </li>
-                        <li className={`nav-item ${navItemActive === WORKOUT_ROUTE ? 'active' : ''}`}>
-                            <img src={gamepad} alt="" className="nav-item-img"/>
-                            <NavLink to={WORKOUT_ROUTE} className="nav-item-link">Тренировка</NavLink>
-                        </li>
-                        <li className={`nav-item ${navItemActive === GROUP_ROUTE ? 'active' : ''}`}>
-                            <img src={modules} alt="" className="nav-item-img"/>
-                            <NavLink to={GROUP_ROUTE} className="nav-item-link">Модули</NavLink>
-                        </li>
-                    </ul>
-                    <button onClick={() => logOut()} className='exit'>Выйти</button>
+                    {user.isAuth ?
+                        <>
+                            <ul className="nav-list">
+                                <li className={`nav-item ${navItemActive === ABOUT_ROUTE ? 'active' : ''}`}>
+                                    <img src={question} alt="" className="nav-item-img"/>
+                                    <NavLink to={ABOUT_ROUTE} className="nav-item-link">О нас</NavLink>
+                                </li>
+                                <li className={`nav-item ${navItemActive === WORKOUT_ROUTE ? 'active' : ''}`}>
+                                    <img src={gamepad} alt="" className="nav-item-img"/>
+                                    <NavLink to={WORKOUT_ROUTE} className="nav-item-link">Тренировка</NavLink>
+                                </li>
+                                <li className={`nav-item ${navItemActive === GROUP_ROUTE ? 'active' : ''}`}>
+                                    <img src={modules} alt="" className="nav-item-img"/>
+                                    <NavLink to={GROUP_ROUTE} className="nav-item-link">Модули</NavLink>
+                                </li>
+                            </ul>
+                            <a href={LOGIN_ROUTE} className="nav-item-link">
+                                <button onClick={() => logOut()} className='exit'>Выйти</button>
+                            </a>
+                        </>
+                        :
+                        <NavLink to={LOGIN_ROUTE} className="nav-item-link">Войти</NavLink>
+                    }
                 </div>
             </div>
         </div>

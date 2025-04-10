@@ -95,9 +95,9 @@ const Module = observer(() => {
                     <div className="button-container">
                         <Container><Button onClick={() => redirectToTraining('test')}>Тест</Button></Container>
                     </div>
-                    <div className="button-container">
-                        <Container><Button>lorem</Button></Container>
-                    </div>
+                    {/*<div className="button-container">*/}
+                    {/*    <Container><Button>lorem</Button></Container>*/}
+                    {/*</div>*/}
                     {/*дестр*/}
                 </div>
                 <div className="card-wrapper">
