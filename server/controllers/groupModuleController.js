@@ -1,6 +1,5 @@
 const {GroupModule, Module, Group, User} = require('../models/models');
 const ApiError = require("../error/ApiError");
-const {logger} = require("sequelize/lib/utils/logger");
 
 class groupModuleController {
     async getUserModulesFromGroups (req, res, next) {

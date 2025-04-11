@@ -1,0 +1,12 @@
+.content {
+    align-items: center;
+}
+
+.text {
+
+}
+
+.iconList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}

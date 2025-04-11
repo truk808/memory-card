@@ -7,7 +7,7 @@ const userRouter = require("./userRouter")
 const groupsRouter = require("./groupsRouter")
 const cardRouter = require("./cardRouter")
 const groupModuleRouter = require("./groupModuleRouter")
-
+const iconRouter = require("./iconRouter")
 
 router.use('/user', userRouter)
 router.use('/groups', groupsRouter)
@@ -16,6 +16,6 @@ router.use('/workout', workoutRouter)
 router.use('/module', moduleRouter)
 router.use('/card', cardRouter)
 router.use('/group-module', groupModuleRouter)
-
+router.use('/icon', iconRouter)
 
 module.exports  = router

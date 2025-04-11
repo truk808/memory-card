@@ -4,7 +4,6 @@ import {Context} from "../../../index";
 import styles from './repeat.module.css';
 import Container from "../../UI/container/Container";
 import Button from "../../UI/button/Button";
-import DraggableContainer from "../../UI/draggableContainer/DraggableContainer";
 import arrowLeft from '../../../img/icon/icon-long-arrow.svg'
 import curvedArrowLeft from '../../../img/icon/icon-curved-arrow-left.svg'
 import curvedArrowRight from '../../../img/icon/icon-curved-arrow-right.svg'
@@ -47,9 +46,12 @@ const Repeat = observer(({cards}) => {
                         <div className={styles.arrLeft}>
                             <img className={styles.icon} src={arrowLeft} onClick={() => handleClick(false)}/>
                         </div>
-                        <p className={styles.text} onClick={handleFlip}>
-                            {flipped ? cards.activeCard.side_two : cards.activeCard.side_one}
-                        </p>
+                        <>
+                            <img src={[process.env.REACT_APP_API_URL, cards.activeCard.img].join("")}/>
+                            <p className={styles.text} onClick={handleFlip}>
+                                {flipped ? cards.activeCard.side_two : cards.activeCard.side_one}
+                            </p>
+                        </>
                         <div className={styles.curvedArrows}>
                             <div className={styles.iconContainer}>
                                 <img className={[styles.icon, styles.red].join(" ")} src={curvedArrowLeft} onClick={() => handleClick(false)}/>

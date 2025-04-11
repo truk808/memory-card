@@ -2,8 +2,7 @@ const {Card, Module} = require('../models/models');
 const ApiError = require("../error/ApiError");
 const uuid = require("uuid");
 const path = require("path");
-const {where} = require("sequelize");
-const {logger} = require("sequelize/lib/utils/logger");
+
 
 // const {img} = req.files;
 // let fileName = uuid.v4() + ".jpg"

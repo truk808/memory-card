@@ -21,7 +21,7 @@ const Module = sequelize.define('module', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: {type: DataTypes.STRING},
     description: {type: DataTypes.STRING},
-    // icon: {type: DataTypes. }  fewfefe
+    icon: {type: DataTypes.STRING, allowNull: true},
 })
 
 const ModuleStats = sequelize.define('module_stats', {
@@ -46,7 +46,11 @@ const GameStats = sequelize.define('game_stats', {
     total_time_spent: {type: DataTypes.INTEGER},
     score: {type: DataTypes.INTEGER},
     date: {type: DataTypes.DATE},
+})
 
+const IconModules = sequelize.define('IconModules', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    icon: {type: DataTypes.STRING},
 })
 
 User.hasMany(Group)
@@ -75,4 +79,5 @@ module.exports = {
     Card,
     GameStats,
     GroupModule,
+    IconModules,
 }
