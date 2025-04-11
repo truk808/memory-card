@@ -11,6 +11,7 @@ import Container from "../components/UI/container/Container";
 import {CARD_ROUTE, GROUP_ROUTE} from "../utils/consts";
 import {deleteModule, getOneModule, updateModule} from "../http/moduleAPI";
 import {createCard, getCardsFromModules} from "../http/cardAPI";
+import ChoseIcon from "../components/choseIcon/ChoseIcon";
 
 const Module = observer(() => {
     const navigate = useNavigate();
@@ -18,6 +19,10 @@ const Module = observer(() => {
     const moduleId = location.pathname.split('/')[2]
     const {module} = useContext(Context);
     const {group} = useContext(Context);
+    const [modal, setModal] = React.useState(false);
+
+
+
 
     const handleAddCard = () => {
         createCard(moduleId).then((data) => {
@@ -26,19 +31,27 @@ const Module = observer(() => {
     }
 
     const handleValueChange = (valueModule) => (e) => {
-        console.log(module.module);
+        module.setModule({ ...module.module, [valueModule]: e.target.value });
+        handleUpdate()
+    }
+
+
+    const handleClickIcon = (icon) => {
+        module.module.icon = icon;
+        console.log(icon);
+        handleUpdate()
+    }
+
+    const handleUpdate = () => {
         const newModule = {
-            ...module.module,
-            [valueModule]: e.target.value,
+            id: module.module.id,
+            name: module.module.name,
+            description: module.module.description,
+            icon: module.module.icon,
         }
-
-        console.log(newModule)
-
-        updateModule(newModule, module.module.id).then(data => {
+        updateModule(newModule, newModule.id).then(data => {
             module.setModule(data);
         })
-
-        module.updateModule(e.target.value)
     }
 
     const handleDeleteClick = (moduleId) => {
@@ -51,6 +64,8 @@ const Module = observer(() => {
     const redirectToTraining = (nameTraining) => {
         navigate(`${CARD_ROUTE}?nameTraining=${nameTraining}`);
     }
+
+
 
     useEffect(() => {
         getOneModule(moduleId).then((data) => {
@@ -66,7 +81,10 @@ const Module = observer(() => {
             <div className="module-wrapper">
                 <button onClick={() => handleDeleteClick(moduleId)}> Удалить</button>
                 <div className="module-title">
-                    <img src={icon} alt="" className="moudule-img"/>
+                    <img
+                        onClick={() => setModal(true)}
+                        src={[process.env.REACT_APP_API_URL, 'icon/', module.module.icon == null ? '' : module.module.icon].join('')}
+                        alt="" className="moudule-img"/>
                     <div className="input-wrapper">
                         <div className="input-container">
                             <Input
@@ -111,6 +129,11 @@ const Module = observer(() => {
                     +
                 </button>
             </div>
+            <ChoseIcon
+                handleClickIcon={handleClickIcon}
+                activeIcon={module.module.icon}
+                modalActive={modal}
+                setModalActive={setModal}/>
         </div>
     );
 });

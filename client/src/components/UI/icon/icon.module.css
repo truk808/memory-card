@@ -5,3 +5,7 @@
     border: 2px solid black;
     padding: 5px;
 }
+
+.icon.active {
+    border: 2px solid #0034ff;
+}

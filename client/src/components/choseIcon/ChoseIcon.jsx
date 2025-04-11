@@ -11,7 +11,6 @@ const ChoseIcon = ({modalActive, setModalActive, group, handleClickIcon, activeI
 
     useEffect(() => {
         getIcon().then(data => {
-            console.log(data)
             setIcons(data);
         })
     }, []);

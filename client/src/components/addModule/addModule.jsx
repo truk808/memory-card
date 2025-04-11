@@ -17,12 +17,8 @@ const AddModule = ({modalActive, setModalActive, group}) => {
 
     function addNewModule() {
         try {
-            const formData = new FormData();
-            // formData.append('name', sideOne);
-            // formData.append('description', sideTwo);
-            // formData.append('description', sideTwo);
-            //
-            createModule(user.user.id, name, description).then(data => {
+            createModule(user.user.id, name, description, icon.icon).then(data => {
+                console.log(data);
                 group.addModule(data);
                 setName('')
                 setDescription('')
@@ -33,7 +29,6 @@ const AddModule = ({modalActive, setModalActive, group}) => {
     }
 
     const handleClickIcon = (newIcon) => {
-        console.log(newIcon)
         setIcon(newIcon)
         setModalChoseIconActive(false)
     }

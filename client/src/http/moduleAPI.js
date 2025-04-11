@@ -10,8 +10,8 @@ export const getOneModule = async (moduleId) => {
     return data;
 }
 
-export const createModule = async (userId, name, description) => {
-    const {data} = await $authHost.post('api/module/', {userId, name, description});
+export const createModule = async (userId, name, description, icon) => {
+    const {data} = await $authHost.post('api/module/', {userId, name, description, icon});
     return data;
 }
 

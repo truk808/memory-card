@@ -4,8 +4,6 @@ export default class ModuleStore {
     constructor() {
         this._module = {}; // {name: "123123", descriptions: "2222222222`"}
         this._cards = [];
-        this._activeCard = null;
-        this._learningCards = [];
         makeAutoObservable(this);
     }
 
@@ -17,39 +15,31 @@ export default class ModuleStore {
         this._cards = cards;
     }
 
-    setActiveCard(card) {
-        this._activeCard = card;
-    }
-
-    setLearningCard(cards) {
-        this._learningCards = cards;
-    }
-
     setCard(id, newCard) {
         this._cards = this._cards.map(card => card.id === id ? { ...card, ...newCard } : card);
     }
 
-    nextCard() {
-        const index = this._learningCards.indexOf(this.activeCard);
+    // nextCard() {
+    //     const index = this._learningCards.indexOf(this.activeCard);
+    //
+    //     if (index + 1 < this.learningCards.length) {
+    //         this.setActiveCard(this.learningCards[index + 1]);
+    //     } else {
+    //         console.log("карт нет")
+    //         this.setActiveCard(null);
+    //     }
+    // }
 
-        if (index + 1 < this.learningCards.length) {
-            this.setActiveCard(this.learningCards[index + 1]);
-        } else {
-            console.log("карт нет")
-            this.setActiveCard(null);
-        }
+    updateName(name) {
+        this._module.name = name;
     }
 
-    updateModule(value) {
-        this._module.name = value
+    updateDescription(description) {
+        this._module.description = description;
     }
 
     deleteCard(id) {
         this._cards = this._cards.filter(card => card.id !== id);
-    }
-
-    get activeCard() {
-        return this._activeCard;
     }
 
     get module() {
@@ -60,7 +50,4 @@ export default class ModuleStore {
         return this._cards
     }
 
-    get learningCards() {
-        return this._learningCards
-    }
 }

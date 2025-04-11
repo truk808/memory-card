@@ -15,13 +15,9 @@ class ModuleController {
     }
 
     async createModule(req, res, next) {
-        const {userId, name, description} = req.body;
+        const {userId, name, description, icon} = req.body;
 
-        // const {img} = req.files;
-        // let fileName = uuid.v4() + ".jpg"
-        // img.mv(path.resolve(__dirname, '..', 'static', fileName));
-
-        const modules = await Module.create({name, userId, description, img: null});
+        const modules = await Module.create({name, userId, description, icon: icon || null});
         return res.json(modules)
     }
 
@@ -34,6 +30,7 @@ class ModuleController {
         }
         module.name = newModule.name;
         module.description = newModule.description;
+        module.icon = newModule.icon.icon;
         module.save()
         return res.json(module);
     }
