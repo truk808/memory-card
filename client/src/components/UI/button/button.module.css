@@ -18,6 +18,20 @@
     background: #8F32E4;;
 }
 
+.red {
+    color: black;
+    border-radius: 10px;
+    border: 2px solid black;
+    transition: 0.1s;
+}
+
+.red:hover {
+    color: white;
+    border-radius: 10px;
+    background: #e43232;;
+    border: none;
+}
+
 .img {
     width: 40%;
     height: 80%;

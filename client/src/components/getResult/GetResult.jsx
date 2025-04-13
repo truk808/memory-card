@@ -3,7 +3,7 @@ import Modal from "../UI/modal/Modal";
 import {NavLink} from "react-router-dom";
 import {GROUP_ROUTE, MODULE_ROUTE} from "../../utils/consts";
 
-const GetResult = ({active, setActive, cards}) => {
+const GetResult = ({active, setActive, cards, type}) => {
     const trueAnswers = cards.trueAnswers.length
     const falseAnswers = cards.falseAnswers.length
     const date = new Date(cards.date)

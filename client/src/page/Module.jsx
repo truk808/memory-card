@@ -77,7 +77,9 @@ const Module = observer(() => {
     return (
         <div className="page">
             <div className="module-wrapper">
-                <button onClick={() => handleDeleteClick(moduleId)}> Удалить</button>
+                <div className="module-button-container">
+                    <Button className={'red'} onClick={() => handleDeleteClick(moduleId)}> Удалить</Button>
+                </div>
                 <div className="module-title">
                     <img
                         onClick={() => setModal(true)}
