@@ -28,9 +28,15 @@ const GroupItem = observer(({group, groups, modules, active, onClick, setGroupMo
                 <img src={iconChange} alt="" className={styles.icon} onClick={(e) => click(e)}/>
             </div>
             <div className={active ? [styles.moduleList, styles.active].join(' ') : styles.moduleList}>
-                {active ? <ModuleList
-                    modules={modules}
-                    groups={groups}/> : null}
+                {
+                    modules.length === 0 ?
+                        <p className={styles.notFound}>В группе нет модулей!</p>
+                        :
+                        active ? <ModuleList modules={modules} groups={groups}/>
+                            :
+                            null
+                }
+
             </div>
         </div>
     );

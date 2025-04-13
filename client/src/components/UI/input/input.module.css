@@ -40,6 +40,10 @@
 
 .inputContainer.change {
     border-bottom: 2px solid black;
+    transition: 0.2s;
 }
 
+.inputContainer.change:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
 

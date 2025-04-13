@@ -19,15 +19,18 @@
 .iconWrapper {
     margin: 20px 0 20px 0;
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
-    background-color: #3646D2;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    border-radius: 20%;
+    border: 2px solid black;
 }
 
 .textIcon {

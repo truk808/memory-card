@@ -16,19 +16,21 @@ const FilterModules = observer(({searchText, group, setGroupModalActive, setSele
     };
 
     const modules = useMemo(() => {
-
-
         if (switchActive) {
-            return group.getUngroupedModules()
+            return group.getUngroupedModules().slice().sort((a, b) => a?.name.localeCompare(b?.name));
         } else {
-            return group.modules
+            return group.modules.slice().sort((a, b) => a?.name.localeCompare(b?.name));
         }
     }, [group.modules, group.groupInModules, switchActive]);
+
 
     return (
         <>
             {searchText ? (
-                <ModuleList modules={searchModules} groups={group}/>
+                searchModules.length !== 0 ?
+                    <ModuleList modules={searchModules} groups={group}/>
+                    :
+                    <p className={styles.notFound}>Модулей с таким названием не найдено</p>
             ) : (
                 <>
                     <GroupList groups={group} setGroupModalActive={setGroupModalActive}

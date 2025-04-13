@@ -48,6 +48,14 @@
     opacity: 0;
 }
 
+.notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 10px;
+}
+
 .moduleList.active {
     max-height: 100dvmax;
     opacity: 1;

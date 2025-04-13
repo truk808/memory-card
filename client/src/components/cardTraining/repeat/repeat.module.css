@@ -31,6 +31,17 @@
     align-items: center;
 }
 
+.crnter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    width: 50%;
+    height: 50%;
+}
+
 .curvedArrows {
     height: 10%;
     display: flex;

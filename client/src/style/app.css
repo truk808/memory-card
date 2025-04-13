@@ -58,5 +58,7 @@ body {
     border: 1px solid black;
 }
 
-
+.card {
+    height: 100%;
+}
 

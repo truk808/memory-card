@@ -25,7 +25,7 @@ const ChoseIcon = ({modalActive, setModalActive, group, handleClickIcon, activeI
                     {
                         icons.map((icon) => (
                             <Icon
-                                active={activeIcon === icon}
+                                active={activeIcon === icon.icon}
                                 onClick={handleClickIcon}
                                 icon={icon}
                                 key={icon.id} />

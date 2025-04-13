@@ -22,8 +22,6 @@ const Module = observer(() => {
     const [modal, setModal] = React.useState(false);
 
 
-
-
     const handleAddCard = () => {
         createCard(moduleId).then((data) => {
             module.setCards([...module.cards, data]);
@@ -84,7 +82,8 @@ const Module = observer(() => {
                     <img
                         onClick={() => setModal(true)}
                         src={[process.env.REACT_APP_API_URL, 'icon/', module.module.icon == null ? '' : module.module.icon].join('')}
-                        alt="" className="moudule-img"/>
+                        alt=""
+                        className="moudule-img"/>
                     <div className="input-wrapper">
                         <div className="input-container">
                             <Input

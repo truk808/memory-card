@@ -1,4 +1,5 @@
 .moduleItem {
+    height: 60px;
     display: flex;
     align-items: center;
     border-radius: 10px;

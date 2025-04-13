@@ -28,17 +28,21 @@ const Test = observer(({cards}) => {
     }, [])
 
     return (
-        <div className={styles.test}>
-            <h1 className={styles.text}>{cards.activeCard.side_two}</h1>
-            <div>
-                <Input
-                    placeholder={'Введите первую сторону'}
-                    value={text}
-                    onChange={handleChangeInput}
-                    onKeyPress={handleKeyPress}>
-                </Input>
+        <div className={styles.center}>
+            <div className={styles.test}>
+                <h1 className={styles.text}>{cards.activeCard.side_two}</h1>
+                <div className={styles.container}>
+                    <Input
+                        placeholder={'Введите первую сторону'}
+                        value={text}
+                        onChange={handleChangeInput}
+                        onKeyPress={handleKeyPress}>
+                        className={"change"}
+                    </Input>
+                </div>
             </div>
         </div>
+
     );
 });
 
