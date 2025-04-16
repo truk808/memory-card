@@ -12,6 +12,7 @@ import Module from "./page/Module";
 import About from "./page/About";
 import Auth from "./page/Auth";
 import Card from "./page/Card";
+import Game from "./page/Game";
 
 // {
 //     path:,
@@ -22,6 +23,14 @@ export const authRoutes = [
     {
         path: WORKOUT_ROUTE,
         component: <Workout />
+    },
+    {
+        path: WORKOUT_ROUTE + '/:nameGame',
+        component: <Game />
+    },
+    {
+        path: WORKOUT_ROUTE + '/:nameGame/:difficult',
+        component: <Game />
     },
     {
         path: GROUP_ROUTE,

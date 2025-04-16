@@ -24,8 +24,6 @@ const App = observer(() => {
         return <Spinner />
     }
 
-    // console.log(user.isAuth)
-
     return (
         <>
             <BrowserRouter>
