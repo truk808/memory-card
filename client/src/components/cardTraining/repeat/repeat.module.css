@@ -1,5 +1,5 @@
 .repeat {
-    height: 100vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,8 +24,7 @@
 }
 
 .text {
-    height: 80%;
-    margin: auto 0 auto 0;
+    margin: 20px auto auto auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,13 +36,14 @@
     justify-content: center;
 }
 
+
 .img {
     width: 50%;
     height: 50%;
 }
-
 .curvedArrows {
-    height: 10%;
+    margin-top: auto;
+    /*margin-top: 80px;*/
     display: flex;
     align-items: center;
     justify-content: space-between;

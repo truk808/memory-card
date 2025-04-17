@@ -38,7 +38,7 @@ const Workout = () => {
                         Название
                     </div>
                     <div>
-                        Описание
+
                     </div>
                 </div>
                 <div className='workout-game-list'>

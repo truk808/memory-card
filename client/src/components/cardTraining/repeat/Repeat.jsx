@@ -34,10 +34,16 @@ const Repeat = observer(({cards}) => {
                         {/*    <img className={styles.icon} src={arrowLeft} onClick={() => handleClick(false)}/>*/}
                         {/*</div>*/}
                         <div className={styles.crnter}>
-                            <img className={styles.img} src={[process.env.REACT_APP_API_URL, cards.activeCard.img].join("")}/>
+                            {
+                                cards.activeCard.img === 'defult' ?
+                                    <div className={styles.img}></div>
+                                    :
+                                    <img className={styles.img}
+                                         src={[process.env.REACT_APP_API_URL, cards.activeCard.img].join("")}/>
+                            }
                         </div>
-                            <p className={styles.text} onClick={handleFlip}>
-                                {flipped ? cards.activeCard.side_two : cards.activeCard.side_one}
+                        <p className={styles.text} onClick={handleFlip}>
+                        {flipped ? cards.activeCard.side_two : cards.activeCard.side_one}
                             </p>
                         <div className={styles.curvedArrows}>
                             <div className={styles.iconContainer}>

@@ -42,7 +42,7 @@ const GameCard = ({name, title, icon, description, tags}) => {
                     )
                 }
             </ul>
-            <div>
+            <div className={styles.container}>
                 <NavLink to={`/workout/${name}/${activeStars.at(-1)}`}>
                     <Button className={'blue'}>Играть</Button>
                 </NavLink>

@@ -26,7 +26,6 @@ const ModuleCardItem = observer(({card, module}) => {
 
     const removeImg = () => {
         deleteImg(card.id).then((data) => {
-            console.log(data)
         })
     }
 
