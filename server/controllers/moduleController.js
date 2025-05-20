@@ -30,7 +30,7 @@ class ModuleController {
         }
         module.name = newModule.name;
         module.description = newModule.description;
-        module.icon = newModule.icon.icon;
+        module.icon = newModule.icon;
         module.save()
         return res.json(module);
     }

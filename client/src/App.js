@@ -27,7 +27,7 @@ const App = observer(() => {
     return (
         <>
             <BrowserRouter>
-                <Header/>
+                {user.isAuth && <Header/>}
                 <AppRouter/>
             </BrowserRouter>
         </>

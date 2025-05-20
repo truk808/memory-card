@@ -8,7 +8,7 @@ const Icon = ({icon, onClick, active}) => {
             <img
                 onClick={() => onClick(icon)}
                 className={[styles.icon, active ? styles.active : ''].join(' ')}
-                src={[process.env.REACT_APP_API_URL, 'icon/', icon.icon].join('')} alt={'d'}>
+                src={[process.env.REACT_APP_API_URL, 'icon/', icon.icon].join('')} alt={''}>
             < /img>
         </>
     );

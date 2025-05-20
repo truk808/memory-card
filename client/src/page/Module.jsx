@@ -16,125 +16,123 @@ import ChoseIcon from "../components/choseIcon/ChoseIcon";
 const Module = observer(() => {
     const navigate = useNavigate();
     const location = useLocation();
-    const moduleId = location.pathname.split('/')[2]
-    const {module} = useContext(Context);
-    const {group} = useContext(Context);
+    const moduleId = location.pathname.split('/')[2];
+    const { module } = useContext(Context);
+    const { group } = useContext(Context);
     const [modal, setModal] = React.useState(false);
+
+    // console.log(
+    //     1, module.module.name,
+    //     1, module.module.description,
+    //     1, module.module.icon
+    //     )
+
+    useEffect(() => {
+        getOneModule(moduleId).then((data) => {
+            module.setModule(data);
+            console.log("Module loaded:", data); // лог после загрузки
+        });
+        getCardsFromModules(moduleId).then((data) => {
+            module.setCards(data);
+        });
+    }, [moduleId]);
 
 
     const handleAddCard = () => {
         createCard(moduleId).then((data) => {
             module.setCards([...module.cards, data]);
         });
-    }
-
-    const handleValueChange = (valueModule) => (e) => {
-        module.setModule({ ...module.module, [valueModule]: e.target.value });
-        handleUpdate()
-    }
-
-
-    const handleClickIcon = (icon) => {
-        module.module.icon = icon;
-        console.log(icon);
-        handleUpdate()
-    }
-
-    const handleUpdate = () => {
-        const newModule = {
-            id: module.module.id,
-            name: module.module.name,
-            description: module.module.description,
-            icon: module.module.icon,
-        }
-        updateModule(newModule, newModule.id).then(data => {
-            module.setModule(data);
-        })
-    }
+    };
 
     const handleDeleteClick = (moduleId) => {
         deleteModule(moduleId).then(() => {
             group.removeModule(moduleId);
-        })
-        navigate(GROUP_ROUTE)
-    }
+            navigate(GROUP_ROUTE);
+        });
+    };
 
     const redirectToTraining = (nameTraining) => {
         navigate(`${CARD_ROUTE}?nameTraining=${nameTraining}`);
-    }
+    };
 
+    const handleValueChange = (field) => (e) => {
+        const value = e.target.value;
+        if (field === 'name') {
+            module.updateName(value);
+        } else if (field === 'description') {
+            module.updateDescription(value);
+        }
+    };
 
+    const handleClickIcon = (icon) => {
+        console.log(module.module.icon)
+        module.updateIcon(icon.icon);
+        setModal(false);
+    };
 
-    useEffect(() => {
-        getOneModule(moduleId).then((data) => {
-            module.setModule(data);
-        });
-        getCardsFromModules(moduleId).then((data) => {
-            module.setCards(data);
-        })
-    }, []);
 
     return (
         <div className="page">
             <div className="module-wrapper">
                 <div className="module-button-container">
-                    <Button className={'red'} onClick={() => handleDeleteClick(moduleId)}> Удалить</Button>
+                    <Button className={'red'} onClick={() => handleDeleteClick(moduleId)}>Удалить</Button>
                 </div>
                 <div className="module-title">
                     <img
                         onClick={() => setModal(true)}
-                        src={[process.env.REACT_APP_API_URL, 'icon/', module.module.icon == null ? '' : module.module.icon].join('')}
+                        src={
+                            module.module.icon
+                                ? [process.env.REACT_APP_API_URL, 'icon/', module.module.icon].join('')
+                                : icon
+                        }
                         alt=""
-                        className="moudule-img"/>
+                        className="moudule-img"
+                    />
                     <div className="input-wrapper">
                         <div className="input-container">
                             <Input
                                 className={'change'}
                                 value={module.module.name}
-                                onChange={handleValueChange('name')}/>
+                                onChange={handleValueChange('name')}
+                            />
                         </div>
                         <div className="input-container">
                             <Input
                                 className={'change'}
                                 value={module.module.description}
-                                onChange={handleValueChange('description')}/>
+                                onChange={handleValueChange('description')}
+                            />
                         </div>
                     </div>
-
                 </div>
-                {/*дестр*/}
+
                 <div className="buttons-wrapper">
                     <div className="button-container">
                         <Container><Button onClick={() => redirectToTraining('repeat')}>Повторение</Button></Container>
                     </div>
                     <div className="button-container">
-                        <Container><Button
-                            onClick={() => redirectToTraining('memorization')}>Заучивание</Button></Container>
+                        <Container><Button onClick={() => redirectToTraining('memorization')}>Заучивание</Button></Container>
                     </div>
                     <div className="button-container">
                         <Container><Button onClick={() => redirectToTraining('test')}>Тест</Button></Container>
                     </div>
-                    {/*<div className="button-container">*/}
-                    {/*    <Container><Button>lorem</Button></Container>*/}
-                    {/*</div>*/}
-                    {/*дестр*/}
                 </div>
+
                 <div className="card-wrapper">
-                    <hr className='separation'/>
-                    <ModuleCardList module={module} cards={module.cards}/>
-                    <hr className='separation'/>
+                    <hr className='separation' />
+                    <ModuleCardList module={module} cards={module.cards} />
+                    <hr className='separation' />
                 </div>
-                <button className="add-card-button" onClick={() => {
-                    handleAddCard()
-                }}>
-                    +
-                </button>
+                <button className="add-card-button" onClick={handleAddCard}>+</button>
             </div>
+
             <ChoseIcon
                 handleClickIcon={handleClickIcon}
                 activeIcon={module.module.icon}
                 modalActive={modal}
-                setModalActive={setModal}/>
+                setModalActive={setModal}
+            />
+
         </div>
     );
 });

@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+import {updateModule} from "../http/moduleAPI";
 
 export default class ModuleStore {
     constructor() {
@@ -19,23 +20,20 @@ export default class ModuleStore {
         this._cards = this._cards.map(card => card.id === id ? { ...card, ...newCard } : card);
     }
 
-    // nextCard() {
-    //     const index = this._learningCards.indexOf(this.activeCard);
-    //
-    //     if (index + 1 < this.learningCards.length) {
-    //         this.setActiveCard(this.learningCards[index + 1]);
-    //     } else {
-    //         console.log("карт нет")
-    //         this.setActiveCard(null);
-    //     }
-    // }
-
-    updateName(name) {
-        this._module.name = name;
+    async updateIcon(icon) {
+        console.log(icon)
+        this._module.icon = icon;
+        await updateModule(this._module, this._module.id);
     }
 
-    updateDescription(description) {
+    async updateName(name) {
+        this._module.name = name;
+        await updateModule(this._module, this._module.id);
+    }
+
+    async updateDescription(description) {
         this._module.description = description;
+        await updateModule(this._module, this._module.id);
     }
 
     deleteCard(id) {
