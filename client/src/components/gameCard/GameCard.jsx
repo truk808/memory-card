@@ -33,12 +33,17 @@ const GameCard = ({name, title, icon, description, tags}) => {
                 </div>
             </div>
             <div>
-                {description}
+                <strong>
+                    {description}
+                </strong>
             </div>
             <ul>
                 {
                     tags.map(tag =>
-                        <li className={styles.li} key={tag.name}><strong>*</strong> {tag}</li>
+                        <i>
+                            <li className={styles.li} key={tag.name}><strong>-</strong> {tag}</li>
+
+                        </i>
                     )
                 }
             </ul>

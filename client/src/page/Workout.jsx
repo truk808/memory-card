@@ -10,22 +10,22 @@ const games = [
         name: 'match-pairs',
         icon: iconCard,
         title: 'Найди пару',
-        description: 'Тренирует память и концентрацию.',
-        tags: ['память', 'фокус'],
+        description: 'Улучшения способности сопоставлять и запоминать взаимосвязанные объекты.',
+        tags: ['память', 'фокус', 'зрительная память'],
     },
     {
         name: 'memory-sequence',
         icon: iconPosl,
         title: 'Повтори последовательность',
-        description: 'lorem ipsum dolor sit amet',
-        tags: ['рабочую память', 'внимание'],
+        description: 'Улучшения способности удерживать и воспроизводить порядок объектов или действий.',
+        tags: ['рабочая память', 'внимание'],
     },
     {
         name: 'remember-words',
         icon: iconTable,
         title: 'Таблица Шульте',
         description: ' таблицы очень эффективны для развития зрительной памяти, а также навыков скорочтения.',
-        tags: ['вербальную память', 'концентрация'],
+        tags: ['вербальная память', 'концентрация'],
     }
 ]
 
@@ -35,7 +35,7 @@ const Workout = () => {
             <div className='page-wrapper'>
                 <div className='title'>
                     <div className='h1-title-text'>
-                        Название
+                        Тренировка
                     </div>
                     <div>
 
