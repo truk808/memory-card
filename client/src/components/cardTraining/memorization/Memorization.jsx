@@ -1,10 +1,12 @@
-import React, {useEffect, useMemo} from 'react';
-import {observer} from "mobx-react-lite";
+import React, { useEffect, useMemo, useState } from 'react';
+import { observer } from "mobx-react-lite";
 import Button from "../../UI/button/Button";
 import Container from "../../UI/container/Container";
+import Toast from "../../Toast/Toast";
 import styles from "./Memoraization.module.css";
 
-const Memorization = observer(({cards}) => {
+const Memorization = observer(({ cards }) => {
+    const [showToast, setShowToast] = useState(false);
 
     const answers = useMemo(() => {
         const answerCorrect = cards.activeCard;
@@ -18,13 +20,14 @@ const Memorization = observer(({cards}) => {
             cards.nextCard();
             cards.addTrueAnswers(cards.activeCard);
         } else {
-            console.log("Ответ немправильный ")
+            cards.addFalseAnswers(cards.activeCard);
+            setShowToast(true);
         }
     };
 
     useEffect(() => {
         cards.setDate(Date.now());
-    }, [])
+    }, []);
 
     return (
         <div className={styles.page}>
@@ -41,7 +44,9 @@ const Memorization = observer(({cards}) => {
                         </div>
                     ))}
                 </div>
-
+                {showToast && (
+                    <Toast message="Неправильный ответ!" onClose={() => setShowToast(false)} />
+                )}
             </div>
         </div>
     );

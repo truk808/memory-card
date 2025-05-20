@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './test.module.css';
 import Input from "../../UI/input/Input";
 import {observer} from "mobx-react-lite";
 import moduleItem from "../../moduleItem/ModuleItem";
+import Toast from "../../Toast/Toast";
 
 const Test = observer(({cards}) => {
+    const [showToast, setShowToast] = useState(false);
     const [text, setText] = React.useState("");
 
     const handleKeyPress = (event) => {
@@ -14,7 +16,8 @@ const Test = observer(({cards}) => {
                 setText('')
                 cards.addTrueAnswers(cards.activeCard);
             } else {
-                console.log('не правильно')
+                setShowToast(true)
+                cards.addFalseAnswers(cards.activeCard);
             }
         }
     };
@@ -26,7 +29,6 @@ const Test = observer(({cards}) => {
     useEffect(() => {
         cards.setDate(Date.now());
     }, [])
-
     return (
         <div className={styles.center}>
             <div className={styles.test}>
@@ -41,6 +43,9 @@ const Test = observer(({cards}) => {
                     </Input>
                 </div>
             </div>
+            {showToast && (
+                <Toast message="Неправильный ответ!" onClose={() => setShowToast(false)} />
+            )}
         </div>
 
     );

@@ -17,23 +17,27 @@ const Auth = observer( () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    console.log(user.email)
+
+
     async function handleClick() {
+        // console.log(user)
         try {
             let data;
             if (isLogin) {
                 data = await login(email, password);
             } else {
                 data = await registration(email, password);
-                console.log(data)
             }
             user.setUser(data);
             user.setIsAuth(true)
             navigate(ABOUT_ROUTE);
         } catch (e) {
-            console.log('error')
             // alert(e.response.data.message)
         }
     }
+
+    console.log(isLogin);
 
     return (
         <div className="auth">
@@ -64,9 +68,9 @@ const Auth = observer( () => {
                 <div className="auth-button-wrapper">
                     <div className="auth-button-container">
                         {isLogin ?
-                            <NavLink href={REGISTRATION_ROUTE}>Зарегистрироваться</NavLink>
+                           <NavLink to={REGISTRATION_ROUTE}>Зарегистрироваться</NavLink>
                             :
-                            <NavLink href={LOGIN_ROUTE}>Войти</NavLink>
+                            <NavLink to={LOGIN_ROUTE}>Войти</NavLink>
                         }
                     </div>
                     <div className="auth-button-container">

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './getResult.module.css';
 import Modal from "../UI/modal/Modal";
 import {NavLink} from "react-router-dom";
 import {GROUP_ROUTE, MODULE_ROUTE} from "../../utils/consts";
@@ -18,13 +19,15 @@ const GetResult = ({active, setActive, cards, type}) => {
 
     return (
         <Modal active={active} setActive={setActive}>
-            <p>Дата {date.getDate()}.{date.getMonth()}.{date.getFullYear()} {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</p>
-            <p>Время {time.getSeconds()} секунд</p>
-            <p>Всего карт {trueAnswers + falseAnswers}</p>
-            <p>Правильных ответов {trueAnswers} {(trueAnswers * 100) / (trueAnswers + falseAnswers)}%</p>
-            <p>Неправильных ответов {falseAnswers}</p>
-            <NavLink to={MODULE_ROUTE} onClick={() => closeHandle()}>далее</NavLink>
+            <div className={styles.resultModal}>
+                <p>📅 Дата: {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()} {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</p>
+                <p>⏱ Время: {time.getSeconds()} сек</p>
+                <p>✅ Правильных ответов: {trueAnswers} ({Math.round((trueAnswers * 100) / (trueAnswers + falseAnswers) * 100) / 100}%)</p>
+                <p>❌ Неправильных ответов: {falseAnswers}</p>
+                <NavLink to={MODULE_ROUTE} onClick={() => closeHandle()}>Далее</NavLink>
+            </div>
         </Modal>
+
     );
 };
 

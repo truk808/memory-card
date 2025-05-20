@@ -60,7 +60,7 @@ export default class GroupStore {
     }
 
     addModule(module) {
-        this._modules.push(module);
+        this._modules = [...this.modules, module]
     }
 
     addModuleInGroup(groupModule) {

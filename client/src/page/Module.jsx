@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useMemo} from 'react';
 import Input from "../components/UI/input/Input";
 import '../style/module.css'
 import icon from "../img/icon/icon-globe.svg";
@@ -69,7 +69,6 @@ const Module = observer(() => {
         module.updateIcon(icon.icon);
         setModal(false);
     };
-
 
     return (
         <div className="page">

@@ -18,7 +18,6 @@ const AddModule = ({modalActive, setModalActive, group}) => {
     function addNewModule() {
         try {
             createModule(user.user.id, name, description, icon.icon).then(data => {
-                console.log(data);
                 group.addModule(data);
                 setName('')
                 setDescription('')

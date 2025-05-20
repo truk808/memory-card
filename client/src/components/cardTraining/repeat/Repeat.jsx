@@ -30,9 +30,6 @@ const Repeat = observer(({cards}) => {
         <div className={styles.repeat}>
             {/*<DraggableContainer>*/}
                     <div className={`${styles.card} ${flipped ? styles.flipped : ''}`}>
-                        {/*<div className={styles.arrLeft}>*/}
-                        {/*    <img className={styles.icon} src={arrowLeft} onClick={() => handleClick(false)}/>*/}
-                        {/*</div>*/}
                         <div className={styles.crnter}>
                             {
                                 cards.activeCard.img === 'defult' ?
@@ -42,6 +39,7 @@ const Repeat = observer(({cards}) => {
                                          src={[process.env.REACT_APP_API_URL, cards.activeCard.img].join("")}/>
                             }
                         </div>
+                        <div className={styles.block}>
                         <p className={styles.text} onClick={handleFlip}>
                         {flipped ? cards.activeCard.side_two : cards.activeCard.side_one}
                             </p>
@@ -52,6 +50,7 @@ const Repeat = observer(({cards}) => {
                             <div className={styles.iconContainer}>
                                 <img className={[styles.icon, styles.green].join(" ")} src={curvedArrowRight} onClick={() => handleClick(true)}/>
                             </div>
+                        </div>
                         </div>
                     </div>
             {/*</DraggableContainer>*/}

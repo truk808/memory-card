@@ -15,7 +15,7 @@ const Header = () => {
     const location = useLocation()
 
     const logOut = () => {
-        user.setUser({})
+        user.setUser(null)
         user.setIsAuth(false)
         localStorage.removeItem('token')
     }
