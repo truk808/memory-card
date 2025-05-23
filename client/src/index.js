@@ -5,6 +5,7 @@ import './style/reset.css'
 import UserStore from "./store/UserStore";
 import ModuleStore from "./store/ModuleStore";
 import GroupStore from "./store/GroupStore";
+import CardStore from "./store/CardStore";
 
 export const Context = createContext(null);
 
@@ -14,6 +15,7 @@ root.render(
         user: new UserStore(),
         group: new GroupStore(),
         module: new ModuleStore(),
+        cards: new CardStore(),
     }}>
         <App/>
     </Context.Provider>

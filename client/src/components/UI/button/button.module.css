@@ -8,14 +8,28 @@
 
 .blue {
     color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     background: #3646D2;
 }
 
 .purple {
     color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     background: #8F32E4;;
+}
+
+.red {
+    color: black;
+    border-radius: 10px;
+    border: 2px solid black;
+    transition: 0.1s;
+}
+
+.red:hover {
+    color: white;
+    border-radius: 10px;
+    background: #e43232;;
+    border: none;
 }
 
 .img {
@@ -24,10 +38,13 @@
 }
 
 .text {
-    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     width: 100%;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;

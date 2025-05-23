@@ -1,12 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
-import {Context} from "../../../index";
 import styles from './repeat.module.css';
-import Container from "../../UI/container/Container";
-import Button from "../../UI/button/Button";
-import DraggableContainer from "../../UI/draggableContainer/DraggableContainer";
+import arrowLeft from '../../../img/icon/icon-long-arrow.svg'
+import curvedArrowLeft from '../../../img/icon/icon-curved-arrow-left.svg'
+import curvedArrowRight from '../../../img/icon/icon-curved-arrow-right.svg'
 
-const Repeat = observer(({module}) => {
+const Repeat = observer(({cards}) => {
     const [flipped, setFlipped] = useState(false);
 
     const handleFlip = () => {
@@ -15,27 +14,45 @@ const Repeat = observer(({module}) => {
 
     const handleClick = (bool) => {
         if(bool) {
-
+            cards.addTrueAnswers(cards.activeCard);
         } else {
-
+            cards.addFalseAnswers(cards.activeCard);
         }
-        module.nextCard();
+        cards.nextCard();
         setFlipped(false)
     }
+
+    useEffect(() => {
+        cards.setDate(Date.now());
+    }, [])
 
     return (
         <div className={styles.repeat}>
             {/*<DraggableContainer>*/}
-                <Container>
-                    <div
-                        className={`${styles.card} ${flipped ? styles.flipped : ''}`}
-                        onClick={handleFlip}
-                    >
-                        {flipped ? module.activeCard.sideTwo : module.activeCard.sideOne}
+                    <div className={`${styles.card} ${flipped ? styles.flipped : ''}`}>
+                        <div className={styles.crnter}>
+                            {
+                                cards.activeCard.img === 'defult' ?
+                                    <div className={styles.img}></div>
+                                    :
+                                    <img className={styles.img}
+                                         src={[process.env.REACT_APP_API_URL, cards.activeCard.img].join("")}/>
+                            }
+                        </div>
+                        <div className={styles.block}>
+                        <p className={styles.text} onClick={handleFlip}>
+                        {flipped ? cards.activeCard.side_two : cards.activeCard.side_one}
+                            </p>
+                        <div className={styles.curvedArrows}>
+                            <div className={styles.iconContainer}>
+                                <img className={[styles.icon, styles.red].join(" ")} src={curvedArrowLeft} onClick={() => handleClick(false)}/>
+                            </div>
+                            <div className={styles.iconContainer}>
+                                <img className={[styles.icon, styles.green].join(" ")} src={curvedArrowRight} onClick={() => handleClick(true)}/>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <Button onClick={() => handleClick(false)}> \--- </Button>
-                    <Button onClick={() => handleClick(true)}> ---/ </Button>
-                </Container>
             {/*</DraggableContainer>*/}
         </div>
     );

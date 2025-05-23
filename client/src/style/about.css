@@ -1,3 +1,81 @@
-.about-icon-container {
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
+ {
+    font-weight: bold;
+}
+
+header {
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 0.5rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.about-title-h2 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.about-title-h1 {
+    font-size: 30px;
+    font-weight: bolder;
+
+}
+
+ul {
+    /*padding: 100px;*/
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.highlight {
+    background-color: #eaf4ff;
+    padding: 1rem;
+    border-left: 4px solid #4a90e2;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #4a90e2;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.cta-button:hover {
+    background-color: #3a78c2;
+}
+
+.pad {
+    margin-top: 60px;
+}
+
+.h7 {
+    font-size: 23px;
 }

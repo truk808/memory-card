@@ -1,21 +1,43 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import '../style/auth.css'
-import {useLocation, useNavigate} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {ABOUT_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import logo from "../img/icon/logo.svg"
 import Input from "../components/UI/input/Input";
 import Button from "../components/UI/button/Button";
+import {login, registration} from "../http/userAPI";
+import {observer} from "mobx-react-lite";
 
-const Auth = () => {
+const Auth = observer( () => {
     const navigate = useNavigate();
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE
     const {user} = useContext(Context);
-    function redirectToAbout() {
-        navigate(ABOUT_ROUTE)
-        user.setIsAuth(true);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    console.log(user.email)
+
+
+    async function handleClick() {
+        // console.log(user)
+        try {
+            let data;
+            if (isLogin) {
+                data = await login(email, password);
+            } else {
+                data = await registration(email, password);
+            }
+            user.setUser(data);
+            user.setIsAuth(true)
+            navigate(ABOUT_ROUTE);
+        } catch (e) {
+            // alert(e.response.data.message)
+        }
     }
+
+    console.log(isLogin);
 
     return (
         <div className="auth">
@@ -28,32 +50,41 @@ const Auth = () => {
                 </div>
                 <div className="auth-inputs-wrapper">
                     <div className="auth-input-container">
-                        <Input className={'login'} placeholder={'Введите логин'}/>
+                        <Input
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            className={'login'}
+                            placeholder={'Введите логин'}/>
                     </div>
                     <div className="auth-input-container">
-                        <Input className={'login'} placeholder={'Введите пароль'}/>
+                        <Input
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            className={'login'}
+                            placeholder={'Введите пароль'}/>
                     </div>
                 </div>
-                <hr className={'auth-separator'} />
+                <hr className={'auth-separator'}/>
                 <div className="auth-button-wrapper">
                     <div className="auth-button-container">
                         {isLogin ?
-                            <a href={REGISTRATION_ROUTE}>Зарегистрироваться</a>
+                           <NavLink to={REGISTRATION_ROUTE}>Зарегистрироваться</NavLink>
                             :
-                            <a href={LOGIN_ROUTE}>Войти</a>
+                            <NavLink to={LOGIN_ROUTE}>Войти</NavLink>
                         }
                     </div>
                     <div className="auth-button-container">
-                        {isLogin ?
-                            <Button className={'blue'} onClick={() => redirectToAbout()}>Войти</Button>
-                            :
-                            <Button className={'blue'} onClick={() => {}}>Зарегистрироваться</Button>
-                        }
+                        <Button
+                            className={'blue'}
+                            onClick={handleClick}
+                        >
+                            {isLogin ? 'Войти' : 'Зарегистрироваться'}
+                        </Button>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+});
 
 export default Auth

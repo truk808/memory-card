@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './test.module.css';
 import Input from "../../UI/input/Input";
 import {observer} from "mobx-react-lite";
 import moduleItem from "../../moduleItem/ModuleItem";
+import Toast from "../../Toast/Toast";
 
-const Test = observer(({module}) => {
+const Test = observer(({cards}) => {
+    const [showToast, setShowToast] = useState(false);
     const [text, setText] = React.useState("");
 
     const handleKeyPress = (event) => {
         if(event.key === 'Enter'){
-            if(text === module.activeCard.sideOne){
-                module.nextCard()
+            if(text === cards.activeCard.side_one){
+                cards.nextCard()
                 setText('')
+                cards.addTrueAnswers(cards.activeCard);
             } else {
-                console.log('не правильно')
+                setShowToast(true)
+                cards.addFalseAnswers(cards.activeCard);
             }
         }
     };
@@ -22,18 +26,28 @@ const Test = observer(({module}) => {
         setText(event.target.value);
     }
 
+    useEffect(() => {
+        cards.setDate(Date.now());
+    }, [])
     return (
-        <div className={styles.test}>
-            <h1 className={styles.text}>{module.activeCard.sideTwo}</h1>
-            <div>
-                <Input
-                    placeholder={'Введите первую сторону'}
-                    value={text}
-                    onChange={handleChangeInput}
-                    onKeyPress={handleKeyPress}>
-                </Input>
+        <div className={styles.center}>
+            <div className={styles.test}>
+                <h1 className={styles.text}>{cards.activeCard.side_two}</h1>
+                <div className={styles.container}>
+                    <Input
+                        placeholder={'Введите первую сторону'}
+                        value={text}
+                        onChange={handleChangeInput}
+                        onKeyPress={handleKeyPress}>
+                        className={"change"}
+                    </Input>
+                </div>
             </div>
+            {showToast && (
+                <Toast message="Неправильный ответ!" onClose={() => setShowToast(false)} />
+            )}
         </div>
+
     );
 });
 

@@ -1,20 +1,10 @@
 import {makeAutoObservable} from "mobx";
+import {updateModule} from "../http/moduleAPI";
 
 export default class ModuleStore {
     constructor() {
-        this._module = {id: 1, name: "der Leute"};
-        this._cards = [
-            {id: 1, sideOne: "der Mann", sideTwo: "Мужчина"},
-            {id: 2, sideOne: "die Frau", sideTwo: "Женщина"},
-            {id: 3, sideOne: "das Madchen", sideTwo: "Девочка"},
-            {id: 4, sideOne: "der Junge", sideTwo: "Мальчик"},
-            {id: 5, sideOne: "der Mensh", sideTwo: "Человек"},
-
-        ];
-        // this._learnedCard = [];
-        // this._notLearnedCard = [];
-        this._activeCard = null;
-        this._learningCards = [];
+        this._module = {}; // {name: "123123", descriptions: "2222222222`"}
+        this._cards = [];
         makeAutoObservable(this);
     }
 
@@ -26,42 +16,28 @@ export default class ModuleStore {
         this._cards = cards;
     }
 
-    setActiveCard(card) {
-        this._activeCard = card;
+    setCard(id, newCard) {
+        this._cards = this._cards.map(card => card.id === id ? { ...card, ...newCard } : card);
     }
 
-    setLearningCard(cards) {
-        this._learningCards = cards;
+    async updateIcon(icon) {
+        console.log(icon)
+        this._module.icon = icon;
+        await updateModule(this._module, this._module.id);
     }
 
-    nextCard() {
-        const index = this._learningCards.indexOf(this.activeCard);
-
-        if (index + 1 < this.learningCards.length) {
-            this.setActiveCard(this.learningCards[index + 1]);
-        } else {
-            console.log("карт нет")
-            this.setActiveCard(null);
-        }
+    async updateName(name) {
+        this._module.name = name;
+        await updateModule(this._module, this._module.id);
     }
 
-    updateCard(id, side, value) {
-        const card = this._cards.find(card => card.id === id);
-        if (card) {
-            card[side] = value;
-        }
-    }
-
-    updateModule(value) {
-        this._module.name = value
+    async updateDescription(description) {
+        this._module.description = description;
+        await updateModule(this._module, this._module.id);
     }
 
     deleteCard(id) {
         this._cards = this._cards.filter(card => card.id !== id);
-    }
-
-    get activeCard() {
-        return this._activeCard;
     }
 
     get module() {
@@ -72,7 +48,4 @@ export default class ModuleStore {
         return this._cards
     }
 
-    get learningCards() {
-        return this._learningCards
-    }
 }

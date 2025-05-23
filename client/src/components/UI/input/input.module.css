@@ -1,22 +1,49 @@
-.input {
-    background: rgb(233,233,234);
+.inputContainer {
+    display: flex;
+    align-items: center;
+    color: black;
     width: 100%;
     height: 100%;
-    border: 2px solid rgba(128, 128, 128, 0.11);
-    /*margin-top: 15px;*/
-    /*margin-bottom: 5px;*/
-    font-size: 23px;
-    padding: 10px;
-    color: black;
-    wrap: soft
 }
 
-.input.login {
+.icon {
+    width: 59px;
+    height: 59px;
+    margin: 5px 14px 5px 17px;
+    transition: transform 0.3s ease-in-out, filter 0.4s ease-in-out;
+}
+
+.icon.active {
+    transform: scale(1.1);
+    filter: brightness(0);
+}
+
+
+.input {
+    width: 90%;
+    font-weight: 400;
+}
+
+.inputContainer.search {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.40);
+    font-size: 28px;
+}
+
+.inputContainer.login {
     border-radius: 10px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-input.card {
-    border-radius: 5px;
+.inputContainer.change {
+    border-bottom: 2px solid black;
+    transition: 0.2s;
 }
+
+.inputContainer.change:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+

@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from "./checkModule.module.css"
+import {observer} from "mobx-react-lite";
 
-const CheckModule = ({module, onChange}) => {
+const CheckModule = observer (({module, onChange, active}) => {
     return (
         <div className={styles.checkModule}>
             <input
@@ -9,10 +10,12 @@ const CheckModule = ({module, onChange}) => {
                 type="checkbox"
                 id="scales"
                 name="scales"
-                className={styles.checkbox}/>
+                className={styles.checkbox}
+                checked={active}
+            />
             <p className={styles.text}>{module.name}</p>
         </div>
     );
-};
+});
 
 export default CheckModule;

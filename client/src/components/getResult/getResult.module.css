@@ -1,0 +1,52 @@
+.resultModal {
+    color: black;
+    padding: 2rem;
+    /*background: #1e1e2f;*/
+    max-width: 500px;
+    margin: auto;
+    animation: fadeIn 0.3s ease-in-out;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.resultModal p {
+    margin: 0.75rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    border-left: 4px solid #4caf50;
+    padding-left: 0.75rem;
+}
+
+.resultModal p:nth-child(3) {
+    border-left-color: #2196f3;
+}
+
+.resultModal p:nth-child(4) {
+    border-left-color: #f44336;
+}
+
+.resultModal a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #4caf50;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.resultModal a:hover {
+    background: #43a047;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
