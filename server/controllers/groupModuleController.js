@@ -73,12 +73,6 @@ class groupModuleController {
                 where: { groupId }
             });
 
-            console.log(deletedRowCount);
-
-            // if (deletedRowCount === 0) {
-            //     return ;
-            // }
-
             return res.json(deletedRowCount);
         } catch (error) {
             return next(ApiError.internal("Ошибка при удалении модуля из группы"));
