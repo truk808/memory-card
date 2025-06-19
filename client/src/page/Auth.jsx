@@ -17,8 +17,6 @@ const Auth = observer( () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    console.log(user.email)
-
 
     async function handleClick() {
         // console.log(user)
@@ -37,7 +35,6 @@ const Auth = observer( () => {
         }
     }
 
-    console.log(isLogin);
 
     return (
         <div className="auth">
