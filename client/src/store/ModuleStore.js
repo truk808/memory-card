@@ -36,6 +36,10 @@ export default class ModuleStore {
         await updateModule(this._module, this._module.id);
     }
 
+    sortCardBuId() {
+        this._cards.sort((a, b) => a.id - b.id);
+    }
+
     deleteCard(id) {
         this._cards = this._cards.filter(card => card.id !== id);
     }
