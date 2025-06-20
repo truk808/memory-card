@@ -21,16 +21,9 @@ const Module = observer(() => {
     const { group } = useContext(Context);
     const [modal, setModal] = React.useState(false);
 
-    // console.log(
-    //     1, module.module.name,
-    //     1, module.module.description,
-    //     1, module.module.icon
-    //     )
-
     useEffect(() => {
         getOneModule(moduleId).then((data) => {
             module.setModule(data);
-            console.log("Module loaded:", data); // лог после загрузки
         });
         getCardsFromModules(moduleId).then((data) => {
             module.setCards(data);

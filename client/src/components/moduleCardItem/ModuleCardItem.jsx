@@ -15,13 +15,13 @@ const ModuleCardItem = observer(({card, module}) => {
         setSelectedFile(e.target.files[0]);
     };
 
-    const handleInputChange = (e, side) => {
+    const handleInputChange = async (e, side) => {
         if (side === 'sideOne') {
-            setSideOne(e.target.value);
+            module.updateSideOne(card.id, e.target.value) // card.update
         } else {
-            setSideTwo(e.target.value);
+            module.updateSideTwo(card.id, e.target.value) // card.update
         }
-        handleUpdate();
+        await handleUpdate();
     }
 
     const removeImg = () => {
@@ -31,14 +31,15 @@ const ModuleCardItem = observer(({card, module}) => {
 
     const handleUpdate = async () => {
         const formData = new FormData();
-        formData.append('side_one', sideOne);
-        formData.append('side_two', sideTwo);
+        formData.append('side_one', card.side_one);
+        formData.append('side_two', card.side_two);
         if (selectedFile) {
             formData.append('img', selectedFile);
         }
 
         updateCard(formData, card.id).then(data => {
-            module.setCard(data, card.id)
+            // console.log('data', data)
+            module.setCard(card.id, data)
         });
     };
 
@@ -77,14 +78,14 @@ const ModuleCardItem = observer(({card, module}) => {
                             <div className={styles.inputContainer}>
                                 <Input
                                     className={'change'}
-                                    value={sideOne}
+                                    value={card.side_one}
                                     onChange={(e) => handleInputChange(e, "sideOne")}
                                 />
                             </div>
                             <div className={styles.inputContainer}>
                                 <Input
                                     className={'change'}
-                                    value={sideTwo}
+                                    value={card.side_two}
                                     onChange={(e) => handleInputChange(e, "sideTwo")}
                                 />
                             </div>

@@ -17,7 +17,7 @@ export default class ModuleStore {
     }
 
     setCard(id, newCard) {
-        this._cards = this._cards.map(card => card.id === id ? { ...card, ...newCard } : card);
+        this._cards = this._cards.map(card => card.id === id ? {...card, ...newCard} : card);
     }
 
     async updateIcon(icon) {
@@ -38,6 +38,15 @@ export default class ModuleStore {
 
     deleteCard(id) {
         this._cards = this._cards.filter(card => card.id !== id);
+    }
+
+    updateSideOne(cardId, sideOne) {
+        this._cards.filter((card) => card.id === cardId)[0].side_one = sideOne;
+        console.log(this._cards.filter((card) => card.id === cardId)[0].side_one)
+    }
+
+    updateSideTwo(cardId, sideTwo) {
+        this._cards.filter((card) => card.id === cardId)[0].side_two = sideTwo;
     }
 
     get module() {
